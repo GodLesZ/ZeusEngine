@@ -1,0 +1,14 @@
+﻿---
+# Network configuration
+network:
+    host: "127.0.0.1"
+    port: 13378
+
+# Database configuration
+database:
+    host: "localhost"
+    user: "root"
+    password: ""
+    database: "zeus"
+
+...

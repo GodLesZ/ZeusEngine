@@ -1,0 +1,14 @@
+
+JobClass(
+
+    Id: Integer, AutoIncrement, PrimaryKey,
+
+    Name: String, Length( 4, 32 ),
+    Description: String,
+
+    Next: JobClass,
+
+    RequiredLevel: Integer,
+    RequiredJobLevel: Integer,
+
+)

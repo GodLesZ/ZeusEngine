@@ -1,0 +1,8 @@
+
+SpriteActionFrame(
+    
+    From: Integer,
+    To: Integer,
+
+    Frames: [Integer]
+)

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0A3846BC-326B-4D41-8324-2CC56D48B6EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Zeus.Library</RootNamespace>
+    <AssemblyName>Zeus.Library</AssemblyName>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>build\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>build\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Dynamic" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="YamlDotNet.Core">
+      <HintPath>..\3rd-party\YamlDotNet-v2.2.0\YamlDotNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="YamlDotNet.RepresentationModel">
+      <HintPath>..\3rd-party\YamlDotNet-v2.2.0\YamlDotNet.RepresentationModel.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DynamicXml.cs" />
+    <Compile Include="IResetableTask.cs" />
+    <Compile Include="MethodInvokeHelper.cs" />
+    <Compile Include="Db\DynamicModel.cs" />
+    <Compile Include="Db\ModelBase.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\MethodInvokeExtensions.cs" />
+    <Compile Include="Extensions\ModelBaseExtensions.cs" />
+    <Compile Include="IO\Tools.cs" />
+    <Compile Include="Pooling\AbstractPool.cs" />
+    <Compile Include="Pooling\CircularStore.cs" />
+    <Compile Include="Pooling\CircularStoreSlot.cs" />
+    <Compile Include="Pooling\EagerPool.cs" />
+    <Compile Include="Pooling\IPool.cs" />
+    <Compile Include="Pooling\IPoolItemStore.cs" />
+    <Compile Include="Pooling\LazyPool.cs" />
+    <Compile Include="Pooling\PoolItemAccessMode.cs" />
+    <Compile Include="Pooling\QueuePoolItemStore.cs" />
+    <Compile Include="Pooling\StackPoolItemStore.cs" />
+    <Compile Include="Scripting\Attributes.cs" />
+    <Compile Include="Scripting\CallPriorityComparer.cs" />
+    <Compile Include="Scripting\NoAssemblyFoundException.cs" />
+    <Compile Include="Scripting\NoSourceFilesException.cs" />
+    <Compile Include="Scripting\ScriptCompiler.cs" />
+    <Compile Include="Timer\DelayCallTimer.cs" />
+    <Compile Include="Timer\DelayStateCallTimer.cs" />
+    <Compile Include="Timer\Timer.cs" />
+    <Compile Include="Timer\TimerChangeEntry.cs" />
+    <Compile Include="Timer\TimerDelegates.cs" />
+    <Compile Include="Timer\TimerPriority.cs" />
+    <Compile Include="Timer\TimerThread.cs" />
+    <Compile Include="Configuration\ConfigurationFactory.cs" />
+    <Compile Include="Configuration\IConfigurationProvider.cs" />
+    <Compile Include="Configuration\Xml\XmlConfiguration.cs" />
+    <Compile Include="Configuration\Yaml\NoYamlConfigurationLoaded.cs" />
+    <Compile Include="Configuration\Yaml\YamlConfiguration.cs" />
+    <Compile Include="Extensions\YamlExtensions.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Zeus.CommunicationFramework\Zeus.CommunicationFramework.csproj">
+      <Project>{F9029D29-6057-4CE9-A775-10F59F450416}</Project>
+      <Name>Zeus.CommunicationFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

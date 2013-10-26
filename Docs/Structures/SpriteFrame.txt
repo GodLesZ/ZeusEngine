@@ -1,0 +1,7 @@
+
+SpriteFrame(
+    Width: Integer,
+    Height: Integer,
+
+    Pixels: [Integer]
+)

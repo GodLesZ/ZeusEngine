@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36176EA4-AACF-42FE-A450-537CA4891980}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Zeus.Server.AuthServer.Library</RootNamespace>
+    <AssemblyName>Zeus.Server.AuthServer.Library</AssemblyName>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>build\Debug\</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>build\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZeusAuthServer.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Zeus.CommunicationFramework\Zeus.CommunicationFramework.csproj">
+      <Project>{F9029D29-6057-4CE9-A775-10F59F450416}</Project>
+      <Name>Zeus.CommunicationFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Zeus.Library\Zeus.Library.csproj">
+      <Project>{0A3846BC-326B-4D41-8324-2CC56D48B6EF}</Project>
+      <Name>Zeus.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Zeus.Library.Models\Zeus.Library.Models.csproj">
+      <Project>{E90FB771-EA54-4E62-AE70-257B6A4F0EE2}</Project>
+      <Name>Zeus.Library.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zeus.Server.Library\Zeus.Server.Library.csproj">
+      <Project>{DB6054BC-A825-4C19-8AE7-A5B1ECD2D937}</Project>
+      <Name>Zeus.Server.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zeus.Server.Library.Models\Zeus.Server.Library.Models.csproj">
+      <Project>{5A3A00E7-7D45-4CA9-9FCF-EA156B10217A}</Project>
+      <Name>Zeus.Server.Library.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

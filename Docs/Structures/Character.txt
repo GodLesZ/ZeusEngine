@@ -1,0 +1,19 @@
+
+Character(
+    
+    Id: Integer, AutoIncrement, PrimaryKey,
+
+    Name: String, Length( 4, 32 ),
+    Biography: String,
+
+    Strength: Integer,
+    Agility: Integer,
+    Dexterity: Integer,
+    Intelligence: Integer,
+    Wisdom: Integer,
+    blabla
+    Luck: Integer,
+
+    JobClass: JobClass,
+
+)

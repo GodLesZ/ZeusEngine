@@ -1,0 +1,16 @@
+﻿---
+# Some comment
+node_test_types:
+    sub_string: "some string"
+    sub_int: 1337
+    sub_float: 8.15
+
+node_test_nesting:
+    sub1_level1:
+        sub1_level2:
+            sub1_level3: "works"
+    sub2_level1: "works also"
+    sub3_level1:
+        sub1_level2: "works all"
+
+...

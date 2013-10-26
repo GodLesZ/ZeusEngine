@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71F6E453-990C-4B65-993A-99536534CF7A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Zeus.Server.Library.Tests.TcpMessageServerTest</RootNamespace>
+    <AssemblyName>Zeus.Server.Library.Tests.TcpMessageServerTest</AssemblyName>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>build\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>build\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="SimpleTcpMessageServer.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="server-conf.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Zeus.Library\Zeus.Library.csproj">
+      <Project>{0A3846BC-326B-4D41-8324-2CC56D48B6EF}</Project>
+      <Name>Zeus.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Server\Zeus.Server.Library\Zeus.Server.Library.csproj">
+      <Project>{DB6054BC-A825-4C19-8AE7-A5B1ECD2D937}</Project>
+      <Name>Zeus.Server.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Shared\Zeus.CommunicationFramework\Zeus.CommunicationFramework.csproj">
+      <Project>{F9029D29-6057-4CE9-A775-10F59F450416}</Project>
+      <Name>Zeus.CommunicationFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

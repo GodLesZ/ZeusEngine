@@ -1,0 +1,170 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{D5EAACE5-4B24-4922-9385-34A4F316C282}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Client.Library", "Client\Zeus.Client.Library\Zeus.Client.Library.csproj", "{C90E72EF-3740-468B-8FC4-2ADC5E3CE4DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{19CD16B5-92D7-4E1F-A21E-3CA5F86F3496}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Server.Library", "Server\Zeus.Server.Library\Zeus.Server.Library.csproj", "{DB6054BC-A825-4C19-8AE7-A5B1ECD2D937}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Server.Library.Models", "Server\Zeus.Server.Library.Models\Zeus.Server.Library.Models.csproj", "{5A3A00E7-7D45-4CA9-9FCF-EA156B10217A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Server.AuthServer.Library", "Server\Zeus.Server.AuthServer.Library\Zeus.Server.AuthServer.Library.csproj", "{36176EA4-AACF-42FE-A450-537CA4891980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Server.AuthServer", "Server\Zeus.Server.AuthServer\Zeus.Server.AuthServer.csproj", "{4208882F-8594-4656-AE46-0A9C9879B0D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Server.WorldServer", "Server\Zeus.Server.WorldServer\Zeus.Server.WorldServer.csproj", "{DB3DB814-1E7E-4980-9ED1-4C3BAB9ED6A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{768E4C85-62BC-4502-A803-0E542C0AB63E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.CommunicationFramework", "Shared\Zeus.CommunicationFramework\Zeus.CommunicationFramework.csproj", "{F9029D29-6057-4CE9-A775-10F59F450416}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Library", "Shared\Zeus.Library\Zeus.Library.csproj", "{0A3846BC-326B-4D41-8324-2CC56D48B6EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Library.Models", "Shared\Zeus.Library.Models\Zeus.Library.Models.csproj", "{E90FB771-EA54-4E62-AE70-257B6A4F0EE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{793123C6-5B73-45CB-A317-CE8E22291A2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{B18D1A65-6C88-43A4-BF9F-D96493966EB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Client.Tests.TcpServiceClientTest", "Tests\Client\Zeus.Client.Tests.TcpServiceClientTest\Zeus.Client.Tests.TcpServiceClientTest.csproj", "{5D9BEBFC-A96F-408A-B84C-36E2A3345DDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Client.Tests.TcpMessageClientTest", "Tests\Client\Zeus.Client.Tests.TcpMessageClientTest\Zeus.Client.Tests.TcpMessageClientTest.csproj", "{4463FD7A-C14C-48C3-BCFC-CD6109455908}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{D208B345-3374-4EF3-A993-B0F11595B51B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Server.Library.Tests.TcpMessageServerTest", "Tests\Server\Zeus.Server.Library.Tests.TcpMessageServerTest\Zeus.Server.Library.Tests.TcpMessageServerTest.csproj", "{71F6E453-990C-4B65-993A-99536534CF7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Server.Library.Tests.TcpServiceServerTest", "Tests\Server\Zeus.Server.Library.Tests.TcpServiceServerTest\Zeus.Server.Library.Tests.TcpServiceServerTest.csproj", "{6BC450DC-1D82-48DC-A9C2-A1FB3557D08F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{7FD63FB4-9A32-4023-B4C8-9244FE7C35E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Library.Tests.DynamicDbModelTests", "Tests\Shared\Zeus.Library.Tests.DynamicDbModelTests\Zeus.Library.Tests.DynamicDbModelTests.csproj", "{F232C976-27B5-4980-84CD-407D6DB5DEF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Library.Tests.PoolingTests", "Tests\Shared\Zeus.Library.Tests.PoolingTests\Zeus.Library.Tests.PoolingTests.csproj", "{66FBF09C-BB02-490C-9BEC-6ACAFA060F40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Library.Tests.ScriptCompilerTests", "Tests\Shared\Zeus.Library.Tests.ScriptCompilerTests\Zeus.Library.Tests.ScriptCompilerTests.csproj", "{D7D525D9-FDC7-43DD-9032-4879CBF3CB4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Library.Tests.YamlConfigurationTests", "Tests\Shared\Zeus.Library.Tests.YamlConfigurationTests\Zeus.Library.Tests.YamlConfigurationTests.csproj", "{99D29C19-BE10-45D8-93B6-3A1252C5EA83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Library.Tests.XmlConfigurationTests", "Tests\Shared\Zeus.Library.Tests.XmlConfigurationTests\Zeus.Library.Tests.XmlConfigurationTests.csproj", "{EA06BBC2-3073-4FE1-BE60-A67B317F0842}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A3846BC-326B-4D41-8324-2CC56D48B6EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A3846BC-326B-4D41-8324-2CC56D48B6EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A3846BC-326B-4D41-8324-2CC56D48B6EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A3846BC-326B-4D41-8324-2CC56D48B6EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36176EA4-AACF-42FE-A450-537CA4891980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36176EA4-AACF-42FE-A450-537CA4891980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36176EA4-AACF-42FE-A450-537CA4891980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36176EA4-AACF-42FE-A450-537CA4891980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4208882F-8594-4656-AE46-0A9C9879B0D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4208882F-8594-4656-AE46-0A9C9879B0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4208882F-8594-4656-AE46-0A9C9879B0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4208882F-8594-4656-AE46-0A9C9879B0D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4463FD7A-C14C-48C3-BCFC-CD6109455908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4463FD7A-C14C-48C3-BCFC-CD6109455908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4463FD7A-C14C-48C3-BCFC-CD6109455908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4463FD7A-C14C-48C3-BCFC-CD6109455908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A3A00E7-7D45-4CA9-9FCF-EA156B10217A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A3A00E7-7D45-4CA9-9FCF-EA156B10217A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A3A00E7-7D45-4CA9-9FCF-EA156B10217A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A3A00E7-7D45-4CA9-9FCF-EA156B10217A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D9BEBFC-A96F-408A-B84C-36E2A3345DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D9BEBFC-A96F-408A-B84C-36E2A3345DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D9BEBFC-A96F-408A-B84C-36E2A3345DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D9BEBFC-A96F-408A-B84C-36E2A3345DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66FBF09C-BB02-490C-9BEC-6ACAFA060F40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66FBF09C-BB02-490C-9BEC-6ACAFA060F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66FBF09C-BB02-490C-9BEC-6ACAFA060F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66FBF09C-BB02-490C-9BEC-6ACAFA060F40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BC450DC-1D82-48DC-A9C2-A1FB3557D08F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC450DC-1D82-48DC-A9C2-A1FB3557D08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC450DC-1D82-48DC-A9C2-A1FB3557D08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC450DC-1D82-48DC-A9C2-A1FB3557D08F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71F6E453-990C-4B65-993A-99536534CF7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71F6E453-990C-4B65-993A-99536534CF7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71F6E453-990C-4B65-993A-99536534CF7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71F6E453-990C-4B65-993A-99536534CF7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99D29C19-BE10-45D8-93B6-3A1252C5EA83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99D29C19-BE10-45D8-93B6-3A1252C5EA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99D29C19-BE10-45D8-93B6-3A1252C5EA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99D29C19-BE10-45D8-93B6-3A1252C5EA83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C90E72EF-3740-468B-8FC4-2ADC5E3CE4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C90E72EF-3740-468B-8FC4-2ADC5E3CE4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C90E72EF-3740-468B-8FC4-2ADC5E3CE4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C90E72EF-3740-468B-8FC4-2ADC5E3CE4DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7D525D9-FDC7-43DD-9032-4879CBF3CB4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D525D9-FDC7-43DD-9032-4879CBF3CB4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D525D9-FDC7-43DD-9032-4879CBF3CB4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D525D9-FDC7-43DD-9032-4879CBF3CB4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB3DB814-1E7E-4980-9ED1-4C3BAB9ED6A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB3DB814-1E7E-4980-9ED1-4C3BAB9ED6A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB3DB814-1E7E-4980-9ED1-4C3BAB9ED6A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB3DB814-1E7E-4980-9ED1-4C3BAB9ED6A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB6054BC-A825-4C19-8AE7-A5B1ECD2D937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB6054BC-A825-4C19-8AE7-A5B1ECD2D937}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB6054BC-A825-4C19-8AE7-A5B1ECD2D937}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB6054BC-A825-4C19-8AE7-A5B1ECD2D937}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90FB771-EA54-4E62-AE70-257B6A4F0EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90FB771-EA54-4E62-AE70-257B6A4F0EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90FB771-EA54-4E62-AE70-257B6A4F0EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90FB771-EA54-4E62-AE70-257B6A4F0EE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA06BBC2-3073-4FE1-BE60-A67B317F0842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA06BBC2-3073-4FE1-BE60-A67B317F0842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA06BBC2-3073-4FE1-BE60-A67B317F0842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA06BBC2-3073-4FE1-BE60-A67B317F0842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F232C976-27B5-4980-84CD-407D6DB5DEF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F232C976-27B5-4980-84CD-407D6DB5DEF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F232C976-27B5-4980-84CD-407D6DB5DEF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F232C976-27B5-4980-84CD-407D6DB5DEF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9029D29-6057-4CE9-A775-10F59F450416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9029D29-6057-4CE9-A775-10F59F450416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9029D29-6057-4CE9-A775-10F59F450416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9029D29-6057-4CE9-A775-10F59F450416}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C90E72EF-3740-468B-8FC4-2ADC5E3CE4DE} = {D5EAACE5-4B24-4922-9385-34A4F316C282}
+		{DB6054BC-A825-4C19-8AE7-A5B1ECD2D937} = {19CD16B5-92D7-4E1F-A21E-3CA5F86F3496}
+		{5A3A00E7-7D45-4CA9-9FCF-EA156B10217A} = {19CD16B5-92D7-4E1F-A21E-3CA5F86F3496}
+		{36176EA4-AACF-42FE-A450-537CA4891980} = {19CD16B5-92D7-4E1F-A21E-3CA5F86F3496}
+		{4208882F-8594-4656-AE46-0A9C9879B0D6} = {19CD16B5-92D7-4E1F-A21E-3CA5F86F3496}
+		{DB3DB814-1E7E-4980-9ED1-4C3BAB9ED6A9} = {19CD16B5-92D7-4E1F-A21E-3CA5F86F3496}
+		{F9029D29-6057-4CE9-A775-10F59F450416} = {768E4C85-62BC-4502-A803-0E542C0AB63E}
+		{0A3846BC-326B-4D41-8324-2CC56D48B6EF} = {768E4C85-62BC-4502-A803-0E542C0AB63E}
+		{E90FB771-EA54-4E62-AE70-257B6A4F0EE2} = {768E4C85-62BC-4502-A803-0E542C0AB63E}
+		{B18D1A65-6C88-43A4-BF9F-D96493966EB7} = {793123C6-5B73-45CB-A317-CE8E22291A2A}
+		{D208B345-3374-4EF3-A993-B0F11595B51B} = {793123C6-5B73-45CB-A317-CE8E22291A2A}
+		{7FD63FB4-9A32-4023-B4C8-9244FE7C35E7} = {793123C6-5B73-45CB-A317-CE8E22291A2A}
+		{5D9BEBFC-A96F-408A-B84C-36E2A3345DDE} = {B18D1A65-6C88-43A4-BF9F-D96493966EB7}
+		{4463FD7A-C14C-48C3-BCFC-CD6109455908} = {B18D1A65-6C88-43A4-BF9F-D96493966EB7}
+		{71F6E453-990C-4B65-993A-99536534CF7A} = {D208B345-3374-4EF3-A993-B0F11595B51B}
+		{6BC450DC-1D82-48DC-A9C2-A1FB3557D08F} = {D208B345-3374-4EF3-A993-B0F11595B51B}
+		{F232C976-27B5-4980-84CD-407D6DB5DEF4} = {7FD63FB4-9A32-4023-B4C8-9244FE7C35E7}
+		{66FBF09C-BB02-490C-9BEC-6ACAFA060F40} = {7FD63FB4-9A32-4023-B4C8-9244FE7C35E7}
+		{D7D525D9-FDC7-43DD-9032-4879CBF3CB4F} = {7FD63FB4-9A32-4023-B4C8-9244FE7C35E7}
+		{99D29C19-BE10-45D8-93B6-3A1252C5EA83} = {7FD63FB4-9A32-4023-B4C8-9244FE7C35E7}
+		{EA06BBC2-3073-4FE1-BE60-A67B317F0842} = {7FD63FB4-9A32-4023-B4C8-9244FE7C35E7}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Server\Zeus.Server.AuthServer\Zeus.Server.AuthServer.csproj
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.VersionControlPolicy = $2
+		$2.inheritsSet = Mono
+		$0.ChangeLogPolicy = $3
+		$3.UpdateMode = ProjectRoot
+		$3.MessageStyle = $4
+		$4.IncludeDirectoryPaths = True
+		$3.inheritsSet = Mono
+	EndGlobalSection
+EndGlobal

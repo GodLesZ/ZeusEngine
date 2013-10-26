@@ -1,0 +1,7 @@
+
+SpriteColor(
+    R: Byte,
+    G: Byte,
+    B: Byte,
+    A: Byte
+)

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <category attr="test">
+    <settings>
+      <node special="true">some value</node>
+      <foo>value2</foo>
+    </settings>
+    <other>
+      <data>1</data>
+      <bar>2</bar>
+    </other>
+  </category>
+  <category no="2">
+    <foo>bar</foo>
+  </category>
+</configuration>

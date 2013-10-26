@@ -1,0 +1,9 @@
+
+SpriteAction(
+    
+    Name: String, Length( 4, 32 ),
+    Duration: Integer,
+
+    FrameCount: Integer,
+    Frames: [SpriteActionFrame]
+)

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F9029D29-6057-4CE9-A775-10F59F450416}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Zeus.CommunicationFramework</RootNamespace>
+    <AssemblyName>Zeus.CommunicationFramework</AssemblyName>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>build\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>build\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommunicationException.cs" />
+    <Compile Include="CommunicationStateException.cs" />
+    <Compile Include="CommunicationStates.cs" />
+    <Compile Include="SimpleConnectionTimer.cs" />
+    <Compile Include="Channels\CommunicationChannelBase.cs" />
+    <Compile Include="Channels\CommunicationChannelEventArgs.cs" />
+    <Compile Include="Channels\ConnectionListenerBase.cs" />
+    <Compile Include="Channels\ICommunicationChannel.cs" />
+    <Compile Include="Channels\IConnectionListener.cs" />
+    <Compile Include="Channels\Tcp\TcpCommunicationChannel.cs" />
+    <Compile Include="Channels\Tcp\TcpConnectionListener.cs" />
+    <Compile Include="Client\ClientBase.cs" />
+    <Compile Include="Client\ClientFactory.cs" />
+    <Compile Include="Client\ClientReConnecter.cs" />
+    <Compile Include="Client\IClient.cs" />
+    <Compile Include="Client\IConnectableClient.cs" />
+    <Compile Include="Client\Tcp\TcpClient.cs" />
+    <Compile Include="Client\Tcp\TcpHelper.cs" />
+    <Compile Include="EndPoints\ProtocolEndPointBase.cs" />
+    <Compile Include="EndPoints\Tcp\TcpEndPoint.cs" />
+    <Compile Include="Messages\IMessage.cs" />
+    <Compile Include="Messages\IReplyMessage.cs" />
+    <Compile Include="Messages\Message.cs" />
+    <Compile Include="Messages\MessageEventArgs.cs" />
+    <Compile Include="Messages\PingMessage.cs" />
+    <Compile Include="Messages\RawDataMessage.cs" />
+    <Compile Include="Messages\TextMessage.cs" />
+    <Compile Include="Messengers\IMessenger.cs" />
+    <Compile Include="Messengers\RequestReplyMessenger.cs" />
+    <Compile Include="Messengers\SynchronizedMessenger.cs" />
+    <Compile Include="Protocols\IWireProtocol.cs" />
+    <Compile Include="Protocols\IWireProtocolFactory.cs" />
+    <Compile Include="Protocols\WireProtocolManager.cs" />
+    <Compile Include="Protocols\BinarySerialization\BinarySerializationProtocol.cs" />
+    <Compile Include="Protocols\BinarySerialization\BinarySerializationProtocolFactory.cs" />
+    <Compile Include="Server\IServer.cs" />
+    <Compile Include="Server\IServerClient.cs" />
+    <Compile Include="Server\ServerBase.cs" />
+    <Compile Include="Server\ServerClient.cs" />
+    <Compile Include="Server\ServerClientEventArgs.cs" />
+    <Compile Include="Server\ServerFactory.cs" />
+    <Compile Include="Server\ServerManager.cs" />
+    <Compile Include="Server\Tcp\TcpServer.cs" />
+    <Compile Include="Services\AutoConnectRemoteInvokeProxy.cs" />
+    <Compile Include="Services\RemoteInvokeProxy.cs" />
+    <Compile Include="Services\Client\IServiceClient.cs" />
+    <Compile Include="Services\Client\ServiceClient.cs" />
+    <Compile Include="Services\Client\ServiceClientBuilder.cs" />
+    <Compile Include="Services\Messages\RemoteException.cs" />
+    <Compile Include="Services\Messages\RemoteInvokeMessage.cs" />
+    <Compile Include="Services\Messages\RemoteInvokeReturnMessage.cs" />
+    <Compile Include="Services\Service\IServiceApplication.cs" />
+    <Compile Include="Services\Service\IServiceClient.cs" />
+    <Compile Include="Services\Service\ServiceApplication.cs" />
+    <Compile Include="Services\Service\ServiceAttribute.cs" />
+    <Compile Include="Services\Service\ServiceBase.cs" />
+    <Compile Include="Services\Service\ServiceBuilder.cs" />
+    <Compile Include="Services\Service\ServiceClient.cs" />
+    <Compile Include="Services\Service\ServiceClientEventArgs.cs" />
+    <Compile Include="Services\Service\ServiceClientFactory.cs" />
+    <Compile Include="Threading\SequentialItemProcessor.cs" />
+    <Compile Include="Threading\ThreadSafeSortedList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+</Project>

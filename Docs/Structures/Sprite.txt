@@ -1,0 +1,14 @@
+
+Sprite(FileFormat)(
+
+    Header: String( SPR ),
+
+    FrameCount: Integer,
+    Frames: [SpriteFrame],
+
+    PaletteSize: Integer( 256 ),
+    Palette: [SpriteColor],
+
+    ActionCount: Integer,
+    Actions: [SpriteAction]
+)
