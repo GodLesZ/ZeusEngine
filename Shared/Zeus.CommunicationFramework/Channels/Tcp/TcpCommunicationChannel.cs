@@ -77,8 +77,6 @@ namespace Zeus.CommunicationFramework.Channels.Tcp {
                 if (_clientSocket.Connected) {
                     _clientSocket.Close();
                 }
-
-                _clientSocket.Dispose();
             } catch {
 
             }

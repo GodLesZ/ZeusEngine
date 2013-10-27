@@ -29,6 +29,7 @@ namespace Zeus.Server.AuthServer {
 
 
             // Prepare console for a large output
+#if WINDOWS
             var width = Math.Min(100, Console.LargestWindowWidth - 2);
             Console.CursorVisible = false;
             Console.Clear();
@@ -36,6 +37,7 @@ namespace Zeus.Server.AuthServer {
             if (Console.WindowWidth < width) {
                 Console.WindowWidth = width;
             }
+#endif
 
             var ver = Assembly.GetExecutingAssembly().GetName().Version;
             Console.Title = string.Format("Zeus auth-server v{0}.{1}", ver.Major, ver.Minor);
