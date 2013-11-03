@@ -1,6 +1,7 @@
 *.suo
 *.user
 *.userprefs
+*.cachefile
 Build
 test-results
 bin
