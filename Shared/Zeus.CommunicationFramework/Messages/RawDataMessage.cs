@@ -33,10 +33,10 @@ namespace Zeus.CommunicationFramework.Messages {
         public override string ToString() {
             var messageLength = MessageData == null ? 0 : MessageData.Length;
             if (RepliedId == 0) {
-                return string.Format("ZcfRawDataMessage [{0}]: {1} bytes", Id, messageLength);
+                return string.Format("RawDataMessage [{0}]: {1} bytes", Id, messageLength);
             }
 
-            return string.Format("ZcfRawDataMessage [{0}] Replied To [{1}]: {2} bytes", Id, RepliedId, messageLength);
+            return string.Format("RawDataMessage [{0}] Replied To [{1}]: {2} bytes", Id, RepliedId, messageLength);
         }
 
     }

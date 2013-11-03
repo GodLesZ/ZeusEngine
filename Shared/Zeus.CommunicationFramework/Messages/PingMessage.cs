@@ -10,7 +10,7 @@ namespace Zeus.CommunicationFramework.Messages {
     public sealed class PingMessage : Message {
 
         public PingMessage() {
-            Id = 1;
+            
         }
 
         public PingMessage(ushort repliedId)
@@ -24,10 +24,10 @@ namespace Zeus.CommunicationFramework.Messages {
         /// <returns>A string to represents this object</returns>
         public override string ToString() {
             if (RepliedId == 0) {
-                return string.Format("ZcfPingMessage [{0}]", Id);
+                return string.Format("PingMessage [{0}]", Id);
             }
 
-            return string.Format("ZcfPingMessage [{0}] Replied To [{1}]", Id, RepliedId);
+            return string.Format("PingMessage [{0}] Replied To [{1}]", Id, RepliedId);
         }
 
     }

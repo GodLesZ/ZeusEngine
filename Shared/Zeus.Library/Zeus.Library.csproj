@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -75,6 +75,13 @@
     <Compile Include="Scripting\NoAssemblyFoundException.cs" />
     <Compile Include="Scripting\NoSourceFilesException.cs" />
     <Compile Include="Scripting\ScriptCompiler.cs" />
+    <Compile Include="Shared\AccountInfo.cs" />
+    <Compile Include="Shared\CharacterInfo.cs" />
+    <Compile Include="Shared\IAccountInfo.cs" />
+    <Compile Include="Shared\AuthServer\LoginResult.cs" />
+    <Compile Include="Shared\ICharacterInfo.cs" />
+    <Compile Include="Shared\IServerDescription.cs" />
+    <Compile Include="Shared\ServerDescription.cs" />
     <Compile Include="Timer\DelayCallTimer.cs" />
     <Compile Include="Timer\DelayStateCallTimer.cs" />
     <Compile Include="Timer\Timer.cs" />
@@ -95,5 +102,9 @@
       <Project>{F9029D29-6057-4CE9-A775-10F59F450416}</Project>
       <Name>Zeus.CommunicationFramework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Shared\InterServer\" />
+    <Folder Include="Shared\WorldServer\" />
   </ItemGroup>
 </Project>

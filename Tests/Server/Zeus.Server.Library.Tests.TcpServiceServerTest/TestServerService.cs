@@ -8,6 +8,10 @@ namespace Zeus.Server.Library.Tests.TcpServiceServerTest {
 
     public class TestServerService : ServiceBase, ITestServerService {
 
+        public void RemoteVoid() {
+            // Does nothing
+        }
+
         /// <summary>
         ///     Invoked by the client including the parameter.
         /// </summary>

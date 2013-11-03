@@ -8,6 +8,11 @@ namespace Zeus.CommunicationFramework.Services.Service {
     public interface IServiceApplication {
 
         /// <summary>
+        ///     Gets the state of the underyling server connection - connected or not.
+        /// </summary>
+        bool Connected { get; }
+
+        /// <summary>
         ///     This event is raised when a new client connected to the service.
         /// </summary>
         event EventHandler<ServiceClientEventArgs> ClientConnected;
@@ -49,6 +54,12 @@ namespace Zeus.CommunicationFramework.Services.Service {
         /// <returns>True: removed. False: no service object with this interface</returns>
         bool RemoveService<TServiceInterface>() where TServiceInterface : class;
 
+        /// <summary>
+        ///     Returns the installed service object.
+        /// </summary>
+        /// <typeparam name="TServiceInterface">Service interface type</typeparam>
+        /// <returns>The service object</returns>
+        TServiceInterface GetService<TServiceInterface>() where TServiceInterface : class;
     }
 
 }

@@ -26,7 +26,7 @@ namespace Zeus.CommunicationFramework.Services.Messages {
         /// </summary>
         /// <returns>String representation of this object</returns>
         public override string ToString() {
-            return string.Format("ZcfRemoteInvokeReturnMessage: Returns {0}, Exception = {1}", ReturnValue, RemoteException);
+            return string.Format("RemoteInvokeReturnMessage: Returns {0}, Exception = {1}", ReturnValue, RemoteException);
         }
 
     }

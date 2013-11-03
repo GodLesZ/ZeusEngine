@@ -32,10 +32,10 @@ namespace Zeus.CommunicationFramework.Messages {
         /// <returns>A string to represents this object</returns>
         public override string ToString() {
             if (RepliedId == 0) {
-                return string.Format("ZcfTextMessage [{0}]: {1}", Id, Text);
+                return string.Format("TextMessage [{0}]: {1}", Id, Text);
             }
 
-            return string.Format("ZcfTextMessage [{0}] Replied To [{1}]: {2}", Id, RepliedId, Text);
+            return string.Format("TextMessage [{0}] Replied To [{1}]: {2}", Id, RepliedId, Text);
         }
 
     }

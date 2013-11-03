@@ -26,6 +26,9 @@ namespace Zeus.Client.Tests.TcpServiceClientTest {
                 if (cmd == "exit") {
                     _serviceClient.Disconnect();
                 }
+                if (cmd == "void") {
+                    _serviceClient.ServiceProxy.RemoteVoid();
+                }
                 if (cmd == "magic") {
                     var poco = new SimplePoco {Id = 1, Title = "My POCO obj"};
                     _serviceClient.ServiceProxy.SomeRemoteMagic(poco);

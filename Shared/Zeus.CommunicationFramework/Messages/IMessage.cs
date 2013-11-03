@@ -10,6 +10,11 @@
         /// </summary>
         ushort Id { get; }
 
+        /// <summary>
+        ///     Unique identified for the message this is replying to.
+        /// </summary>
+        ushort RepliedId { get; set; }
+
     }
 
 }

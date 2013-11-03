@@ -94,6 +94,13 @@ namespace Zeus.CommunicationFramework.Services.Service {
         private readonly IServer _zcfServer;
 
         /// <summary>
+        ///     Gets the state of the underyling server connection - connected or not.
+        /// </summary>
+        public bool Connected {
+            get { return _zcfServer != null && _zcfServer.Connected; }
+        }
+
+        /// <summary>
         ///     This event is raised when a new client connected to the service.
         /// </summary>
         public event EventHandler<ServiceClientEventArgs> ClientConnected;
@@ -170,6 +177,16 @@ namespace Zeus.CommunicationFramework.Services.Service {
         public bool RemoveService<TServiceInterface>()
             where TServiceInterface : class {
             return _serviceObjects.Remove(typeof(TServiceInterface).Name);
+        }
+
+        public TServiceInterface GetService<TServiceInterface>()
+            where TServiceInterface : class {
+            var type = typeof (TServiceInterface).Name;
+            if (_serviceObjects.ContainsKey(type) == false) {
+                throw new ArgumentOutOfRangeException("Service of type \"" + type + "\" not installed yet.");
+            }
+
+            return _serviceObjects[type] as TServiceInterface;
         }
 
         /// <summary>

@@ -5,6 +5,8 @@ namespace Zeus.Server.Library.Tests.TcpServiceServerTest.Shared {
     [Service(Version = "1.0.0.0")]
     public interface ITestServerService {
 
+        void RemoteVoid();
+
         void SomeRemoteMagic(SimplePoco poco);
         void RaiseTheException();
 

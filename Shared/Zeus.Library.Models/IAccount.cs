@@ -2,7 +2,7 @@
 
     public interface IAccount : IModel {
 
-        int Id { get; }
+        long Id { get; }
 
         string Login { get; }
 

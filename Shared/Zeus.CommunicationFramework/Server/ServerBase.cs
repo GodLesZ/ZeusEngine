@@ -16,6 +16,15 @@ namespace Zeus.CommunicationFramework.Server {
         public IConnectionListener Connection { get; private set; }
 
         /// <summary>
+        ///     Gets the state of the connection - connected or not.
+        /// </summary>
+        public bool Connected {
+            get {
+                return Connection != null && Connection.IsActive;
+            } 
+        }
+
+        /// <summary>
         ///     A collection of clients that are connected to the server.
         /// </summary>
         public ThreadSafeSortedList<long, IServerClient> Clients { get; private set; }

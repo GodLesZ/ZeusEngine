@@ -1,0 +1,41 @@
+# Connection test #
+
+# Notes #
+- Techn. Probleme:
+  * Der Invoke auf eine Methode prüft die Anzahl und den Typ der Parameter - ein "out" Parameter wird beim Serialize nicht mitgezählt und
+    führt zu einer Invoke Ausnahme.
+	Methoden mit "out" Parameter sind daher derzeit nicht möglich
+  * IEnumerable<T> sind nicht serialisierbar, List<T> muss verwendet werden.
+    List<T> Objekte können allerdings verändert werden (was jedoch keine Auswirkung hat).
+	Ggf müssen hier T[] Arrays verwendet werden
+
+# Client #
+* Login öffnet Socket zum AuthServer
+	> AuthServer validiert Logindaten und gibt Account Info zurück
+	  // Wenn "out" Parameter moeglich werden, dann
+		 LoginError AuthServer.ClientLogin(string username, string password, out IAccountInfo accountInfo);
+	  // Bisher aber nur
+		 IAccountInfo AuthServer.ClientLogin(string username, string password);
+* Erfragt verfügbare Server Typen
+	IEnumerable<IServerDescription> GetServerDescriptions();
+* Client wählt einen Server 
+	// Wenn "out" Parameter möglich werden, kann SelectServer() auch gleich die Charakter Liste zurückgeben
+	// Bei der Rückgabe der IServerDescription sollte von jeder IServerDescription bereits ein verfügbarer WorldServer gesucht
+	// und in dem IServerDescriptio Objekt mit zurückgegeben werden; spart 3 Aufrufe
+	bool AuthServer.SelectServer(IServerDescription server);
+* Client erfragt Charakter Liste
+	IEnumerable<ICharacter> GetCharacters();
+* Client wählt einen Character und benötigt den Socket vom gewählten WorldServer
+	IWorldServerEndPoint WorldLogin(ICharacter character);
+	> AuthServer erfragt am InterServer verfügbare WorldServer
+		IWorldServerEndPoint InterServer.GetBestWorldServer(IAccount);
+		> InterServer prüft verfügbare WorldServer auf Auslastung und wählt den mit dem niedrigsten peek
+		> InterServer informiert den WorldServer über den authorisierten Client für eine zukünftige Verbindung
+		void WorldServer.AuthClient(IAccount);
+		> InterServer informiert AuthServer über den gewählten WorldServer
+	> AuthServer informiert den Client über den gewählten WorldServer
+		
+* Client verwendet EndPoint zur Verbindung mit dem WorldServer
+	bool WorldServer.Login(IAccount account);
+
+=> Client bekommt Infos vom WorldServer über Objekte

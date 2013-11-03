@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <network>
+    <host>127.0.0.1</host>
+    <port>13378</port>
+    <inter_server>
+      <host>127.0.0.1</host>
+      <port>13379</port>
+      <password>unique connection password</password>
+    </inter_server>
+  </network>
+  <database>
+    <host>127.0.0.1</host>
+    <port>3306</port>
+    <username>root</username>
+    <password></password>
+    <database>zeus</database>
+  </database>
+</configuration>

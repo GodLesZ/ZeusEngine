@@ -7,7 +7,8 @@ namespace Zeus.CommunicationFramework.Messages {
     ///     This is the base class for all messages between .NET applications.
     /// </summary>
     [Serializable]
-    public class Message : IReplyMessage {
+    public class Message : IMessage {
+        protected static ushort _messageId = 1;
 
         /// <summary>
         ///     Unique identified for this message.
@@ -22,7 +23,9 @@ namespace Zeus.CommunicationFramework.Messages {
 
 
         protected Message() {
-            Id = 0;
+            // @FIX: Temp. fix, each message needs a unique id, this will kill ushort a way to fast
+            // @TODO: A Message sent by a service (RemoteInvokeMessage) need a unique ID
+            Id = _messageId++;
         }
 
         public Message(ushort id) {

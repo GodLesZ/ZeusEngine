@@ -21,7 +21,7 @@ namespace Zeus.Server.Models {
         }
 
 
-        public int Id { get; protected set; }
+        public long Id { get; protected set; }
 
         public string Login { get; protected set; }
 

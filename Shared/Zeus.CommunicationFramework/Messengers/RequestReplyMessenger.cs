@@ -72,7 +72,7 @@ namespace Zeus.CommunicationFramework.Messengers {
         /// <summary>
         ///     Default Timeout value.
         /// </summary>
-        private const int DefaultTimeout = 60000;
+        private const int DefaultTimeout = 600000;
 
         /// <summary>
         ///     This object is used to process incoming messages sequentially.
@@ -261,12 +261,11 @@ namespace Zeus.CommunicationFramework.Messengers {
         /// <param name="e">Event arguments</param>
         private void Messenger_MessageReceived(object sender, MessageEventArgs e) {
             // Check if there is a waiting thread for this message in SendMessageAndWaitForResponse method
-            var replyMessage = e.Message as IReplyMessage;
-            if (replyMessage != null && replyMessage.RepliedId != 0) {
+            if (e.Message != null && e.Message.RepliedId != 0) {
                 WaitingMessage waitingMessage = null;
                 lock (_syncObj) {
-                    if (_waitingMessages.ContainsKey(replyMessage.RepliedId)) {
-                        waitingMessage = _waitingMessages[replyMessage.RepliedId];
+                    if (_waitingMessages.ContainsKey(e.Message.RepliedId)) {
+                        waitingMessage = _waitingMessages[e.Message.RepliedId];
                     }
                 }
 
