@@ -89,11 +89,11 @@
     <Compile Include="Timer\TimerDelegates.cs" />
     <Compile Include="Timer\TimerPriority.cs" />
     <Compile Include="Timer\TimerThread.cs" />
-    <Compile Include="Configuration\ConfigurationFactory.cs" />
-    <Compile Include="Configuration\IConfigurationProvider.cs" />
-    <Compile Include="Configuration\Xml\XmlConfiguration.cs" />
+    <Compile Include="Configuration\Factory.cs" />
+    <Compile Include="Configuration\IProvider.cs" />
+    <Compile Include="Configuration\Xml\Provider.cs" />
     <Compile Include="Configuration\Yaml\NoYamlConfigurationLoaded.cs" />
-    <Compile Include="Configuration\Yaml\YamlConfiguration.cs" />
+    <Compile Include="Configuration\Yaml\Provider.cs" />
     <Compile Include="Extensions\YamlExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

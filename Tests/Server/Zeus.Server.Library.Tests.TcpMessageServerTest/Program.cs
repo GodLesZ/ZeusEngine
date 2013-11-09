@@ -12,7 +12,7 @@ namespace Zeus.Server.Library.Tests.TcpMessageServerTest {
 
         public static void Main(string[] args) {
             // Try access a config
-            var conf = ConfigurationFactory.Create<XmlConfiguration>("server-conf.xml");
+            var conf = Factory.Create<Provider>("server-conf.xml");
             var dynConf = conf.AsExpando().configuration;
 
             // Prepare console for a large output

@@ -5,7 +5,7 @@ using Zeus.Library.Configuration;
 
 namespace Zeus.Library.Configuration.Xml {
 
-    public class XmlConfiguration : IConfigurationProvider {
+    public class Provider : IProvider {
 
         protected XElement _root;
 
@@ -13,7 +13,7 @@ namespace Zeus.Library.Configuration.Xml {
         /// <summary>
         ///     Creates a new instance without an attached configuration file.
         /// </summary>
-        public XmlConfiguration() {
+        public Provider() {
 
         }
 
@@ -21,7 +21,7 @@ namespace Zeus.Library.Configuration.Xml {
         ///     Creates a new instance and tries to load from the given <paramref name="filepath" />.
         /// </summary>
         /// <param name="filepath"></param>
-        public XmlConfiguration(string filepath)
+        public Provider(string filepath)
             : this() {
             Load(filepath);
         }

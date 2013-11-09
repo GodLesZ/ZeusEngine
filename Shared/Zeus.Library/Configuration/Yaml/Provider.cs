@@ -11,7 +11,7 @@ namespace Zeus.Library.Configuration.Yaml {
     /// <summary>
     ///     Wraps a <see cref="YamlStream" />
     /// </summary>
-    public class YamlConfiguration : IConfigurationProvider {
+    public class Provider : IProvider {
 
         protected YamlStream _yamlStream;
 
@@ -29,7 +29,7 @@ namespace Zeus.Library.Configuration.Yaml {
         /// <summary>
         ///     Creates a new instance without an attached configuration file.
         /// </summary>
-        public YamlConfiguration() {
+        public Provider() {
 
         }
 
@@ -37,7 +37,7 @@ namespace Zeus.Library.Configuration.Yaml {
         ///     Creates a new instances an attaches the given <see cref="YamlDocument" /> to the underlying stream.
         /// </summary>
         /// <param name="doc"></param>
-        public YamlConfiguration(YamlDocument doc) {
+        public Provider(YamlDocument doc) {
             EnsureActiveYamlStream();
             _yamlStream.Documents.Add(doc);
         }
@@ -46,7 +46,7 @@ namespace Zeus.Library.Configuration.Yaml {
         ///     Creates a new instance and tries to load from the given <paramref name="filepath" />.
         /// </summary>
         /// <param name="filepath"></param>
-        public YamlConfiguration(string filepath)
+        public Provider(string filepath)
             : this() {
             Load(filepath);
         }
@@ -55,7 +55,7 @@ namespace Zeus.Library.Configuration.Yaml {
         ///     Creates a new instance and tries to load from the given <paramref name="inputStream" />.
         /// </summary>
         /// <param name="inputStream"></param>
-        public YamlConfiguration(TextReader inputStream)
+        public Provider(TextReader inputStream)
             : this() {
             Load(inputStream);
         }

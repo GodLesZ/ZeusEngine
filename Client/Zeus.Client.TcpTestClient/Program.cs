@@ -17,7 +17,7 @@ namespace Zeus.Client.TcpTestClient {
         protected static IServiceClient<IClientService> _service;
 
         public static void Main(string[] args) {
-            var serverConfiguration = ConfigurationFactory.Create<XmlConfiguration>("conf/client.xml");
+            var serverConfiguration = Factory.Create<Provider>("conf/client.xml");
             var dynamicConfig = serverConfiguration.FirstAsExpando().configuration;
                         
             string address = string.Format("tcp://{0}:{1}", dynamicConfig.zeus.host, dynamicConfig.zeus.port);

@@ -10,7 +10,7 @@ namespace Zeus.Library.Tests.YamlConfigurationTests {
 
         [Test]
         public static void TestYamlDataTypesInExpandoString() {
-            var conf = ConfigurationFactory.Create<YamlConfiguration>("conf.yaml");
+            var conf = Factory.Create<Provider>("conf.yaml");
             var dynConf = conf.FirstAsExpando();
 
             Assert.IsInstanceOf<string>(dynConf.node_test_types.sub_string);
@@ -19,7 +19,7 @@ namespace Zeus.Library.Tests.YamlConfigurationTests {
 
         [Test]
         public static void TestYamlDataTypesInExpandoInteger() {
-            var conf = ConfigurationFactory.Create<YamlConfiguration>("conf.yaml");
+            var conf = Factory.Create<Provider>("conf.yaml");
             var dynConf = conf.FirstAsExpando();
 
             Assert.IsInstanceOf<int>(dynConf.node_test_types.sub_int);
@@ -28,7 +28,7 @@ namespace Zeus.Library.Tests.YamlConfigurationTests {
 
         [Test]
         public static void TestYamlDataTypesInExpandoFloat() {
-            var conf = ConfigurationFactory.Create<YamlConfiguration>("conf.yaml");
+            var conf = Factory.Create<Provider>("conf.yaml");
             var dynConf = conf.FirstAsExpando();
 
             Assert.IsInstanceOf<float>(dynConf.node_test_types.sub_float);

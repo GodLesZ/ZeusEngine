@@ -2,7 +2,7 @@
 
 namespace Zeus.Library.Configuration {
 
-    public interface IConfigurationProvider {
+    public interface IProvider {
 
         void Load(string filepath);
         void Load(TextReader inputStream);

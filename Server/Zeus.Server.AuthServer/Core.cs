@@ -20,7 +20,7 @@ namespace Zeus.Server.AuthServer {
 
         public static void Main(string[] args) {
             // Try access a config
-            var serverConfiguration = ConfigurationFactory.Create<XmlConfiguration>("conf/server.xml");
+            var serverConfiguration = Factory.Create<Provider>("conf/server.xml");
             var dynamicConfig = serverConfiguration.FirstAsExpando().configuration;
 
             // Prepare console for a large output

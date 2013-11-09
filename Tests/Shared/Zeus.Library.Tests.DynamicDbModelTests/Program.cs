@@ -1,33 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 using Zeus.Library.Db;
+using Zeus.Server.Library;
 
 namespace Zeus.Library.Tests.DynamicDbModelTests {
 
     public class Program {
 
         public static void Main(string[] args) {
-            dynamic table = new DynamicModel("zeus_localhost", "account");
-            var searchResult = table.Find(columns: "id, login AS LoginProp");
+            var dbSserver = "localhost";
+            var dbUser = "root";
+            var dbPassword = "";
+            var dbDatabase = "zeus_db";
+            var connStr = String.Format("server={0};user id={1}; password={2}; database={3}; pooling=false", dbSserver, dbUser, dbPassword, dbDatabase);
 
-            var i = 0;
-            Console.WriteLine("== Dump {0} results", searchResult.Count);
-            foreach (var account in searchResult) {
-                Console.WriteLine("{0}: {1} (id #{2})", i++, account.LoginProp, account.id);
+            Globals.Initialize(connStr);
+
+            try {
+                var defaultProvider = Zeus.Server.Library.Database.Factory.CreateProvider<Zeus.Server.Library.Database.Mysql.Provider>();
+                
+
+
+                var conn = new MySqlConnection(connStr);
+                conn.Open();
+
+                MySqlDataReader reader = null;
+
+                var cmd = new MySqlCommand("SHOW DATABASES", conn);
+                try {
+                    reader = cmd.ExecuteReader();
+                    foreach (var row in (DbDataReader)reader) {
+                        
+                    }
+                    while (reader.Read()) {
+                        var database = reader.GetString(0);
+                    }
+                } catch (MySqlException ex) {
+                    Console.WriteLine("Failed to populate database list: " + ex.Message);
+                } finally {
+                    if (reader != null) {
+                        reader.Close();
+                    }
+                }
+            } catch (MySqlException ex) {
+                Console.WriteLine("Error connecting to the server: " + ex.Message);
             }
 
-
-            Console.WriteLine();
-            
-            var newAcc = table.Insert(new { login = string.Format("dynamic_created_account{0}", i) });
-            Console.WriteLine("New account: {0} (id #{1})", newAcc.login, newAcc.id);
-
-            Console.Read();
         }
-        
+
     }
 
 

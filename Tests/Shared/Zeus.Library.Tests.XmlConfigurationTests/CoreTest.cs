@@ -14,7 +14,7 @@ namespace Zeus.Library.Tests.XmlConfigurationTests {
 
         [Test]
         public static void TestCorrectXmlStructure() {
-            var conf = ConfigurationFactory.Create<XmlConfiguration>("conf.xml");
+            var conf = Factory.Create<Provider>("conf.xml");
             var dyncConf = conf.AsExpando().configuration;
 
             var node_category = dyncConf.category[0];

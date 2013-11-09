@@ -2,9 +2,9 @@
 
 namespace Zeus.Library.Configuration {
 
-    public class ConfigurationFactory {
+    public class Factory {
 
-        public static T Create<T>(string filepath) where T : IConfigurationProvider {
+        public static T Create<T>(string filepath) where T : IProvider {
             var ctor = typeof(T).GetConstructor(new[] {
                 typeof(string)
             });
