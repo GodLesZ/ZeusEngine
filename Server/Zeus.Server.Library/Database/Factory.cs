@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using MysqlProvider = Zeus.Server.Library.Database.Mysql.Provider;
 
 namespace Zeus.Server.Library.Database {
@@ -7,7 +6,7 @@ namespace Zeus.Server.Library.Database {
     public static class Factory {
 
         private static IProvider CreateDefaultProvider() {
-            return new MysqlProvider(Globals.DatabaseConfiguration);
+            return new MysqlProvider(Globals.DatabaseConnectionString);
         }
 
         public static T CreateProvider<T>() where T : IProvider {
