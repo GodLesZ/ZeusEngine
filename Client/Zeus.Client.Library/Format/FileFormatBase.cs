@@ -6,15 +6,25 @@ namespace Zeus.Client.Library.Format {
 
     public abstract class FileFormatBase : IFileFormat, IDisposable {
 
-        public Encoding Encoding { get; internal set; }
+        public Encoding Encoding {
+            get;
+            internal set;
+        }
 
-        public string Filepath { get; internal set; }
+        public string Filepath {
+            get;
+            internal set;
+        }
 
-        public BinaryReader Reader { get; internal set; }
+        public BinaryReader Reader {
+            get;
+            internal set;
+        }
 
-        public FileFormatVersion Version { get; internal set; }
-
-        public BinaryWriter Writer { get; internal set; }
+        public BinaryWriter Writer {
+            get;
+            internal set;
+        }
 
         public event OnFlushHandler OnFlush;
 
@@ -46,6 +56,11 @@ namespace Zeus.Client.Library.Format {
 
             Read(filepath);
         }
+        protected FileFormatBase(byte[] data) {
+            using (var ms = new MemoryStream(data)) {
+                Read(ms);
+            }
+        }
 
         protected FileFormatBase(Stream stream)
             : this(stream, null) {
@@ -72,8 +87,6 @@ namespace Zeus.Client.Library.Format {
             if (disposable != null) {
                 disposable.Dispose();
             }
-
-            obj = null;
         }
 
         public void Dispose() {
@@ -85,12 +98,12 @@ namespace Zeus.Client.Library.Format {
         }
 
         #region Read
-        public virtual bool Read() {
+        public bool Read() {
             return Reader != null && ReadInternal();
 
         }
 
-        public virtual bool Read(Stream stream) {
+        public bool Read(Stream stream) {
             if (stream == null || stream.CanRead == false) {
                 throw new Exception("Failed to read form stream!");
             }
@@ -104,7 +117,7 @@ namespace Zeus.Client.Library.Format {
             return ReadInternal();
         }
 
-        public virtual bool Read(string filepath) {
+        public bool Read(string filepath) {
             if (File.Exists(filepath) == false) {
                 throw new ArgumentException("File \"" + filepath + "\" not found!");
             }

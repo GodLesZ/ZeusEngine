@@ -2,8 +2,8 @@
 
 namespace Zeus.Client.Library.Format.Ragnarok.Act {
 
-    public class Action : List<ActionFrame> {
-
+    public class Action : List<Motion> {
+         
     }
 
 }

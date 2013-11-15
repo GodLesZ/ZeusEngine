@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -37,10 +37,16 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Format\Ragnarok\Act\Action.cs" />
+    <Compile Include="Format\Ragnarok\Act\AttachPoint.cs" />
+    <Compile Include="Format\Ragnarok\Act\Format.cs" />
+    <Compile Include="Format\Ragnarok\Act\Motion.cs" />
+    <Compile Include="Format\Ragnarok\Act\SpriteClip.cs" />
+    <Compile Include="Format\Ragnarok\FileFormat.cs" />
+    <Compile Include="Format\Ragnarok\FileFormatHeader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FastBitmap.cs" />
-    <Compile Include="MoveDirection.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="Format\FileFormatBase.cs" />
     <Compile Include="Format\FileFormatVersion.cs" />
@@ -48,34 +54,24 @@
     <Compile Include="Format\Compression\Adler32.cs" />
     <Compile Include="Format\Compression\Deflate.cs" />
     <Compile Include="Format\Compression\RLE.cs" />
-    <Compile Include="Format\Ragnarok\Act\Action.cs" />
-    <Compile Include="Format\Ragnarok\Act\ActionAttachmentPoint.cs" />
-    <Compile Include="Format\Ragnarok\Act\ActionFile.cs" />
-    <Compile Include="Format\Ragnarok\Act\ActionFrame.cs" />
-    <Compile Include="Format\Ragnarok\Act\ActionFrameImage.cs" />
-    <Compile Include="Format\Ragnarok\Act\ActionIntervalList.cs" />
-    <Compile Include="Format\Ragnarok\Act\ActionList.cs" />
-    <Compile Include="Format\Ragnarok\Act\ActionSoundList.cs" />
     <Compile Include="Format\Ragnarok\Gat\GroundCell.cs" />
     <Compile Include="Format\Ragnarok\Gat\GroundCellType.cs" />
-    <Compile Include="Format\Ragnarok\Gat\GroundFile.cs" />
-    <Compile Include="Format\Ragnarok\Grf\ERoGrfFileItemState.cs" />
-    <Compile Include="Format\Ragnarok\Grf\RoGrfEvents.cs" />
-    <Compile Include="Format\Ragnarok\Grf\RoGrfFile.cs" />
-    <Compile Include="Format\Ragnarok\Grf\RoGrfFileItem.cs" />
-    <Compile Include="Format\Ragnarok\Grf\RoGrfHelper.cs" />
-    <Compile Include="Format\Ragnarok\Pal\Palette.cs" />
-    <Compile Include="Format\Ragnarok\Rsw\WorldFile.cs" />
-    <Compile Include="Format\Ragnarok\Rsw\WorldFileEffect.cs" />
-    <Compile Include="Format\Ragnarok\Rsw\WorldFileLight.cs" />
-    <Compile Include="Format\Ragnarok\Rsw\WorldFileModel.cs" />
-    <Compile Include="Format\Ragnarok\Rsw\WorldFileObjectBase.cs" />
-    <Compile Include="Format\Ragnarok\Rsw\WorldFileSound.cs" />
-    <Compile Include="Format\Ragnarok\Rsw\WorldHeader.cs" />
-    <Compile Include="Format\Ragnarok\Spr\Sprite.cs" />
+    <Compile Include="Format\Ragnarok\Gat\Format.cs" />
+    <Compile Include="Format\Ragnarok\Grf\FileItemState.cs" />
+    <Compile Include="Format\Ragnarok\Grf\Events.cs" />
+    <Compile Include="Format\Ragnarok\Grf\Format.cs" />
+    <Compile Include="Format\Ragnarok\Grf\FileItem.cs" />
+    <Compile Include="Format\Ragnarok\Grf\EncryptionHelper.cs" />
+    <Compile Include="Format\Ragnarok\Pal\Format.cs" />
+    <Compile Include="Format\Ragnarok\Spr\Format.cs" />
     <Compile Include="Format\Ragnarok\Spr\SpriteImage.cs" />
     <Compile Include="Format\Ragnarok\Spr\SpriteImagePal.cs" />
     <Compile Include="Format\Ragnarok\Spr\SpriteImageRgba.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Format\Ragnarok\Gnd\" />
+    <Folder Include="Format\Ragnarok\Rsm\" />
+    <Folder Include="Format\Ragnarok\Rsw\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

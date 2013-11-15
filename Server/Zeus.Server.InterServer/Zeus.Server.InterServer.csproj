@@ -54,7 +54,7 @@
       <Name>Zeus.Library.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Zeus.Server.InterServer.Library\Zeus.Server.InterServer.Library.csproj">
-      <Project>{36176EA4-AACF-42FE-A450-537CA4891980}</Project>
+      <Project>{5A748439-9548-41AA-A746-7E7607554AFF}</Project>
       <Name>Zeus.Server.InterServer.Library</Name>
     </ProjectReference>
     <ProjectReference Include="..\Zeus.Server.Library\Zeus.Server.Library.csproj">

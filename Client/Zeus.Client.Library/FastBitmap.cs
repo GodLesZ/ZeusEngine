@@ -6,7 +6,7 @@ namespace Zeus.Client.Library {
 
     public unsafe class FastBitmap : IDisposable {
 
-        public struct PixelData {
+        public struct Pixel {
             public byte Alpha;
             public byte Blue;
             public byte Green;
@@ -18,7 +18,7 @@ namespace Zeus.Client.Library {
         }
 
         protected BitmapData _bitmapData = null;
-        protected PixelData* _currentPixelData = null;
+        protected Pixel* _currentPixel = null;
         protected byte* _pointer = null;
         protected int _width = 0;
         protected Bitmap _workingBitmap = null;
@@ -49,7 +49,7 @@ namespace Zeus.Client.Library {
         public void LockImage() {
             var bounds = new Rectangle(Point.Empty, _workingBitmap.Size);
 
-            _width = bounds.Width*sizeof (PixelData);
+            _width = bounds.Width*sizeof (Pixel);
             if (_width%4 != 0) {
                 _width = 4*(_width/4 + 1);
             }
@@ -71,17 +71,17 @@ namespace Zeus.Client.Library {
 
 
         public Color GetPixel(int x, int y) {
-            _currentPixelData = (PixelData*) (Pointer + y*_width + x*sizeof (PixelData));
-            return Color.FromArgb(_currentPixelData->Alpha, _currentPixelData->Red, _currentPixelData->Green, _currentPixelData->Blue);
+            _currentPixel = (Pixel*) (Pointer + y*_width + x*sizeof (Pixel));
+            return Color.FromArgb(_currentPixel->Alpha, _currentPixel->Red, _currentPixel->Green, _currentPixel->Blue);
         }
 
         public Color GetPixelNext() {
-            _currentPixelData++;
-            return Color.FromArgb(_currentPixelData->Alpha, _currentPixelData->Red, _currentPixelData->Green, _currentPixelData->Blue);
+            _currentPixel++;
+            return Color.FromArgb(_currentPixel->Alpha, _currentPixel->Red, _currentPixel->Green, _currentPixel->Blue);
         }
 
         public void SetPixel(int x, int y, Color color) {
-            var data = (PixelData*) (Pointer + (y*_width) + (x*sizeof (PixelData)));
+            var data = (Pixel*) (Pointer + (y*_width) + (x*sizeof (Pixel)));
             data->Alpha = color.A;
             data->Red = color.R;
             data->Green = color.G;
