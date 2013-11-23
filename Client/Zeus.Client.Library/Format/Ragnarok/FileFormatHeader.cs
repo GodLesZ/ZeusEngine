@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 
 namespace Zeus.Client.Library.Format.Ragnarok {
 
@@ -26,7 +27,17 @@ namespace Zeus.Client.Library.Format.Ragnarok {
 
 
         public bool IsValid() {
-            return _expectedMagicBytes == null || _expectedMagicBytes == MagicBytes;
+            if (_expectedMagicBytes == null) {
+                return true;
+            }
+            if (MagicBytes == null) {
+                return false;
+            }
+            if (_expectedMagicBytes.Length != MagicBytes.Length) {
+                return false;
+            }
+
+            return _expectedMagicBytes.Where((t, i) => t != MagicBytes[i]).Any() == false;
         }
          
     }

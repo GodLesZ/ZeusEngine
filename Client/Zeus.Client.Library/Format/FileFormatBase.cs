@@ -121,6 +121,9 @@ namespace Zeus.Client.Library.Format {
             if (File.Exists(filepath) == false) {
                 throw new ArgumentException("File \"" + filepath + "\" not found!");
             }
+            if (Encoding == null) {
+                Encoding = Encoding.Default;
+            }
 
             Filepath = filepath;
             Reader = new BinaryReader(File.OpenRead(filepath), Encoding);
@@ -130,7 +133,7 @@ namespace Zeus.Client.Library.Format {
 
 
         protected virtual bool ReadInternal() {
-            return false;
+            return true;
         }
         #endregion
 

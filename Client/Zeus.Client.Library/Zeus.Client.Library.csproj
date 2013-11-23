@@ -10,7 +10,8 @@
     <RootNamespace>Zeus.Client.Library</RootNamespace>
     <AssemblyName>Zeus.Client.Library</AssemblyName>
     <SynchReleaseVersion>false</SynchReleaseVersion>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,8 +34,20 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\3rd-party\MonoGame-v3.0\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\3rd-party\MonoGame-v3.0\OpenTK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="Tao.Sdl, Version=1.2.13.0, Culture=neutral, PublicKeyToken=9c7a200e36c0094e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\3rd-party\MonoGame-v3.0\Tao.Sdl.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Format\Ragnarok\Act\Action.cs" />
@@ -44,6 +57,20 @@
     <Compile Include="Format\Ragnarok\Act\SpriteClip.cs" />
     <Compile Include="Format\Ragnarok\FileFormat.cs" />
     <Compile Include="Format\Ragnarok\FileFormatHeader.cs" />
+    <Compile Include="Format\Ragnarok\Rsm\Format.cs" />
+    <Compile Include="Format\Ragnarok\Rsm\ModelAnimationFrame.cs" />
+    <Compile Include="Format\Ragnarok\Rsm\ModelMesh.cs" />
+    <Compile Include="Format\Ragnarok\Rsm\ModelMeshFace.cs" />
+    <Compile Include="Format\Ragnarok\Rsm\ModelShadeType.cs" />
+    <Compile Include="Format\Ragnarok\Rsw\Format.cs" />
+    <Compile Include="Format\Ragnarok\Rsw\LightData.cs" />
+    <Compile Include="Format\Ragnarok\Rsw\MapObjectType.cs" />
+    <Compile Include="Format\Ragnarok\Rsw\MapObjectBase.cs" />
+    <Compile Include="Format\Ragnarok\Rsw\Objects\Effect.cs" />
+    <Compile Include="Format\Ragnarok\Rsw\Objects\Sound.cs" />
+    <Compile Include="Format\Ragnarok\Rsw\Objects\Light.cs" />
+    <Compile Include="Format\Ragnarok\Rsw\Objects\Model.cs" />
+    <Compile Include="Format\Ragnarok\Rsw\WaterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FastBitmap.cs" />
@@ -70,8 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Format\Ragnarok\Gnd\" />
-    <Folder Include="Format\Ragnarok\Rsm\" />
-    <Folder Include="Format\Ragnarok\Rsw\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

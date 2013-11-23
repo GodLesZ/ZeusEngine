@@ -1,5 +1,4 @@
-﻿#region Using Statements
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -7,9 +6,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
-#endregion
+using RsmFormat = Zeus.Client.Library.Format.Ragnarok.Rsm.Format;
+using RswFormat = Zeus.Client.Library.Format.Ragnarok.Rsw.Format;
 
 namespace Zeus.Client.Tests.MonoGameTest {
+
     /// <summary>
     /// This is the main type for your game
     /// </summary>
@@ -17,13 +18,16 @@ namespace Zeus.Client.Tests.MonoGameTest {
         protected GraphicsDeviceManager _graphics;
         protected SpriteBatch _spriteBatch;
 
-        protected Model _pronteraModel;
+        protected RsmFormat _testRsm;
+        protected RswFormat _testRsw;
+
+        protected BasicEffect _modelEffect;
         protected float _aspectRatio;
         protected Vector3 _modelPosition = Vector3.Zero;
-        protected float _modelRotation = 0.0f;
-        protected Vector3 _cameraPosition = new Vector3(0.0f, 50.0f, 5000.0f);
+        protected float _modelRotation = 0;
+        protected Vector3 _cameraPosition = new Vector3(0, 0, 50.0f);
 
-        protected bool _showWireframe = true;
+        protected bool _showWireframe = false;
 
         protected KeyboardState _oldKeyboardState;
         protected MouseState _oldMouseState;
@@ -47,8 +51,16 @@ namespace Zeus.Client.Tests.MonoGameTest {
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _pronteraModel = Content.Load<Model>("prontera");
             _aspectRatio = _graphics.GraphicsDevice.Viewport.Width / (float)_graphics.GraphicsDevice.Viewport.Height;
+
+            _testRsm = new RsmFormat("Content/random_test_model.rsm");
+            _testRsm.CalculateMeshes(GraphicsDevice);
+
+            //_testRsw = new RswFormat("Content/prontera.rsw");
+            //_testRsw.Load(GraphicsDevice, "C:/Games/RO/data/");
+
+            _modelEffect = new BasicEffect(GraphicsDevice);
+            _modelEffect.TextureEnabled = true;
         }
 
         /// <summary>
@@ -70,10 +82,10 @@ namespace Zeus.Client.Tests.MonoGameTest {
 
             if (mouseState.RightButton == ButtonState.Pressed) {
                 if (mouseMovement.X != 0) {
-                    _cameraPosition.X += mouseMovement.X * (keyboardState.IsKeyDown(Keys.LeftControl) ? 3 : 1);
+                    _cameraPosition.X += mouseMovement.X * (keyboardState.IsKeyDown(Keys.LeftControl) ? 0.1f : 0.001f);
                 }
                 if (mouseMovement.Y != 0) {
-                    _cameraPosition.Y += mouseMovement.Y;
+                    _cameraPosition.Y += mouseMovement.Y * (keyboardState.IsKeyDown(Keys.LeftControl) ? 0.1f : 0.001f);
                 }
             }
 
@@ -93,6 +105,12 @@ namespace Zeus.Client.Tests.MonoGameTest {
             if (keyboardState.IsKeyDown(Keys.Up)) {
                 _modelPosition.Y++;
             }
+            if (keyboardState.IsKeyDown(Keys.PageUp)) {
+                _modelPosition.Z++;
+            }
+            if (keyboardState.IsKeyDown(Keys.PageDown)) {
+                _modelPosition.Z--;
+            }
 
             if (keyboardState.IsKeyUp(Keys.W) && _oldKeyboardState.IsKeyDown(Keys.W)) {
                 _showWireframe = !_showWireframe;
@@ -110,16 +128,7 @@ namespace Zeus.Client.Tests.MonoGameTest {
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // Copy any parent transforms
-            var transforms = new Matrix[_pronteraModel.Bones.Count];
-            _pronteraModel.CopyAbsoluteBoneTransformsTo(transforms);
-
-            GraphicsDevice.BlendState = BlendState.Opaque;
-            GraphicsDevice.DepthStencilState = DepthStencilState.Default;
-
-            GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
-
+            
             if (_showWireframe) {
                 var rasterizerState = new RasterizerState {
                     FillMode = FillMode.WireFrame
@@ -132,16 +141,20 @@ namespace Zeus.Client.Tests.MonoGameTest {
                 GraphicsDevice.RasterizerState = rasterizerState;
             }
 
-            foreach (var mesh in _pronteraModel.Meshes) {
-                foreach (BasicEffect effect in mesh.Effects) {
-                    //effect.EnableDefaultLighting();
-                    effect.World = transforms[mesh.ParentBone.Index] * Matrix.CreateRotationY(_modelRotation) * Matrix.CreateTranslation(_modelPosition);
-                    effect.View = Matrix.CreateLookAt(_cameraPosition, Vector3.Zero, Vector3.Up);
-                    effect.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), _aspectRatio, 1.0f, 10000.0f);
-                }
-                // Draw the mesh, using the effects set above.
-                mesh.Draw();
-            }
+            /*
+            var world = Matrix.CreateRotationX(_modelRotation) * Matrix.CreateRotationY(_modelRotation) * Matrix.CreateTranslation(_modelPosition);
+            var view = Matrix.CreateLookAt(_cameraPosition, Vector3.Zero, Vector3.Up);
+            var projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), _aspectRatio, 1.0f, 10000.0f);
+            */
+            var world =
+                Matrix.CreateRotationX(_cameraPosition.Y) *
+                Matrix.CreateRotationY(_cameraPosition.X) *
+                Matrix.CreateTranslation(0.0f, 0f, 5f);
+            var view = Matrix.CreateLookAt(new Vector3(0, 0, _cameraPosition.Z), Vector3.Zero, Vector3.Up);
+            var projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), _aspectRatio, 1.0f, 10000.0f);
+
+            _testRsm.Draw(GraphicsDevice, _modelEffect, view, projection, world);
+            //_testRsw.DrawAll(GraphicsDevice, _modelEffect, view, projection, world);
 
             base.Draw(gameTime);
         }
