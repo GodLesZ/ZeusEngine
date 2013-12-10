@@ -102,9 +102,7 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsm {
                 // @TODO: Dynamic base path
                 var dataFilepath = TexturesPaths[index];
                 var filepath = string.Format("C:/Games/RO/{0}", dataFilepath);
-                using (var bitmap = (Bitmap)Bitmap.FromFile(filepath)) {
-                    TexturesCache[index] = bitmap.ToTexture2D(device);
-                }
+                TexturesCache[index] = ImageExtensions.FromFile(filepath, device);
             }
 
             return TexturesCache[index];

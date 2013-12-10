@@ -281,14 +281,14 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsm {
             foreach (var face in Faces) {
                 for (var c = 0; c < 3; c++) {
                     var position = VerticePositions[face.Vertices[c]];
-                    var textureCoordinate = TextureCoordinats[face.TextureVertices[c]];
-                    var vertexPositionNormalTex = new VertexPositionNormalTexture(position, face.Normal, textureCoordinate);
+                    var coord = TextureCoordinats[face.TextureVertices[c]];
+                    var vertex = new VertexPositionNormalTexture(position, face.Normal, coord);
 
                     if (VerticeListByTextureIndex.ContainsKey(face.TextureIndex) == false) {
                         VerticeListByTextureIndex.Add(face.TextureIndex, new List<VertexPositionNormalTexture>());
                     }
                     
-                    VerticeListByTextureIndex[face.TextureIndex].Add(vertexPositionNormalTex);
+                    VerticeListByTextureIndex[face.TextureIndex].Add(vertex);
                 }
             }
 

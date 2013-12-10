@@ -57,6 +57,8 @@
     <Compile Include="Format\Ragnarok\Act\SpriteClip.cs" />
     <Compile Include="Format\Ragnarok\FileFormat.cs" />
     <Compile Include="Format\Ragnarok\FileFormatHeader.cs" />
+    <Compile Include="Format\Ragnarok\Gnd\Format.cs" />
+    <Compile Include="Format\Ragnarok\Gnd\TextureInfo.cs" />
     <Compile Include="Format\Ragnarok\Rsm\Format.cs" />
     <Compile Include="Format\Ragnarok\Rsm\ModelAnimationFrame.cs" />
     <Compile Include="Format\Ragnarok\Rsm\ModelMesh.cs" />
@@ -95,8 +97,6 @@
     <Compile Include="Format\Ragnarok\Spr\SpriteImagePal.cs" />
     <Compile Include="Format\Ragnarok\Spr\SpriteImageRgba.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Format\Ragnarok\Gnd\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

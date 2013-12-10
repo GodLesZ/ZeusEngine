@@ -95,6 +95,12 @@ namespace Zeus.Client.Library {
 
     public static class ImageExtensions {
 
+        public static Texture2D FromFile(string filepath, GraphicsDevice device) {
+            using (var bitmap = (Bitmap)Bitmap.FromFile(filepath)) {
+                return bitmap.ToTexture2D(device);
+            }
+        }
+
 
         private static Texture2D ImageToTexture2D(Bitmap image, GraphicsDevice g) {
             Texture2D texture = null;
