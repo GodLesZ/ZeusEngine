@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using Zeus.CommunicationFramework.EndPoints;
 using Zeus.CommunicationFramework.EndPoints.Tcp;
 using Zeus.CommunicationFramework.Messages;
+using Zeus.CommunicationFramework.Protocols;
 
 namespace Zeus.CommunicationFramework.Channels.Tcp {
 
@@ -54,8 +55,11 @@ namespace Zeus.CommunicationFramework.Channels.Tcp {
         ///     used to communicate over network
         /// </param>
         public TcpCommunicationChannel(Socket clientSocket) {
+            WireProtocol = WireProtocolManager.GetWireProtocol("Binary");
+
             _clientSocket = clientSocket;
-            _clientSocket.NoDelay = true;
+            // @TODO: Enable support for partial data and nagle algorithm in JsonWireProtocol
+            _clientSocket.NoDelay = false;
 
             var ipEndPoint = (IPEndPoint)_clientSocket.RemoteEndPoint;
             _remoteEndPoint = new TcpEndPoint(ipEndPoint.Address.ToString(), ipEndPoint.Port);
@@ -107,8 +111,7 @@ namespace Zeus.CommunicationFramework.Channels.Tcp {
                 while (totalSent < messageBytes.Length) {
                     var sent = _clientSocket.Send(messageBytes, totalSent, messageBytes.Length - totalSent, SocketFlags.None);
                     if (sent <= 0) {
-                        throw new CommunicationException("Message could not be sent via TCP socket. Only " + totalSent + " bytes of " + messageBytes.Length +
-                                                         " bytes are sent.");
+                        throw new CommunicationException("Message could not be sent via TCP socket. Only " + totalSent + " bytes of " + messageBytes.Length + " bytes are sent.");
                     }
 
                     totalSent += sent;

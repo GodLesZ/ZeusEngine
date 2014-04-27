@@ -21,7 +21,7 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsw.Objects {
             protected set;
         }
 
-        public string RsmModelName {
+        public string Filename {
             get;
             protected set;
         }
@@ -52,30 +52,43 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsw.Objects {
             // Defaults
             RsmModel = null;
             AnimationType = 0;
-            AnimationSpeed = 1.0f;
+            AnimationSpeed = 0;
             BlockType = 0;
 
             if (_parentRsw.FileHeader.Version.IsCompatible(1, 3)) {
                 Name = _parentRsw.Reader.ReadStringIso(40);
                 AnimationType = _parentRsw.Reader.ReadInt32();
-                AnimationSpeed = _parentRsw.Reader.ReadInt32();
+                AnimationSpeed = _parentRsw.Reader.ReadSingle();
                 BlockType = _parentRsw.Reader.ReadInt32();
+
                 // Sanity settings
                 if (AnimationSpeed < 0.0f || AnimationSpeed >= 100.0f) {
                     AnimationSpeed = 1.0f;
                 }
             }
 
-            RsmModelName = _parentRsw.Reader.ReadStringIso(80);
+            Filename = _parentRsw.Reader.ReadStringIso(80);
             NodeName = _parentRsw.Reader.ReadStringIso(80);
-            Position = new Vector3(_parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle());
-            Rotation = new Vector3(_parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle());
-            Scale = new Vector3(_parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle());
+            Position = new Vector3(
+                _parentRsw.Reader.ReadSingle() / 5,
+                _parentRsw.Reader.ReadSingle() / 5,
+                _parentRsw.Reader.ReadSingle() / 5
+            );
+            Rotation = new Vector3(
+                _parentRsw.Reader.ReadSingle(), 
+                _parentRsw.Reader.ReadSingle(), 
+                _parentRsw.Reader.ReadSingle()
+            );
+            Scale = new Vector3(
+                _parentRsw.Reader.ReadSingle() / 5, 
+                _parentRsw.Reader.ReadSingle() / 5, 
+                _parentRsw.Reader.ReadSingle() / 5
+            );
         }
 
 
         public void Load(GraphicsDevice device, string dataPath) {
-            string filepath = string.Format("{0}model/{1}", dataPath, RsmModelName);
+            string filepath = string.Format("{0}model/{1}", dataPath, Filename);
             RsmModel = new RsmModel(filepath);
             RsmModel.CalculateMeshes(device);
         }

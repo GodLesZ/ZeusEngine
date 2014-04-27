@@ -35,9 +35,9 @@
             // Defaults
             Level = 0f;
             Type = 0;
-            WaveHeight = 1.0f;
-            WaveSpeed = 2.0f;
-            WavePitch = 50.0f;
+            WaveHeight = 0.2f;
+            WaveSpeed = 2f;
+            WavePitch = 50f;
             AnimSpeed = 3;
             
             if (_parentRsw.FileHeader.Version.IsCompatible(1, 3)) {

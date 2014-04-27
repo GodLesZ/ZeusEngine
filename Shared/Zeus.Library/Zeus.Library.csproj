@@ -68,7 +68,7 @@
     <Compile Include="Pooling\IPool.cs" />
     <Compile Include="Pooling\IPoolItemStore.cs" />
     <Compile Include="Pooling\LazyPool.cs" />
-    <Compile Include="Pooling\PoolItemAccessMode.cs" />
+    <Compile Include="Pooling\EPoolItemAccessMode.cs" />
     <Compile Include="Pooling\QueuePoolItemStore.cs" />
     <Compile Include="Pooling\StackPoolItemStore.cs" />
     <Compile Include="Scripting\Attributes.cs" />

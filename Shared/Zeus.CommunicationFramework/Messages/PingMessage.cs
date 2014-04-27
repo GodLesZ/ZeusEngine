@@ -9,12 +9,24 @@ namespace Zeus.CommunicationFramework.Messages {
     [Serializable]
     public sealed class PingMessage : Message {
 
+        /// <summary>
+        ///     Bad hack to get a difference between a base <see cref="Message"/> 
+        ///     and a derived <see cref="PingMessage"/>.
+        /// </summary>
+        public bool Ping { get; set; }
+
+
         public PingMessage() {
-            
+            Ping = true;
         }
 
-        public PingMessage(ushort repliedId)
-            : this() {
+        public PingMessage(ushort id) {
+            Id = id;
+            Ping = true;
+        }
+
+        public PingMessage(ushort id, ushort repliedId)
+            : this(id) {
             RepliedId = repliedId;
         }
 

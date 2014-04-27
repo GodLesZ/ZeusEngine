@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Zeus.Client.Library.Format.Ragnarok.Gnd {
 
     public class TextureInfo {
-        protected Format _parentGnd;
+        protected readonly Format _parentGnd;
 
         public string Filename {
             get;

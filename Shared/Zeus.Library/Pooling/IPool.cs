@@ -4,7 +4,7 @@ namespace Zeus.Library.Pooling {
 
     public interface IPool<T> {
 
-        Func<IPool<T>, T> Factory { get; }
+        Func<IPool<T>, T> ItemFactoryFunc { get; }
 
         bool IsDisposed { get; }
 

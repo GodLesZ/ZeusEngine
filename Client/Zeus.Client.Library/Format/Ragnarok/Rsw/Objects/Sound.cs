@@ -38,11 +38,15 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsw.Objects {
         public Sound(Format rsw)
             : base(rsw, MapObjectType.Sound) {
             // Defaults
-            Cycle = 4.0f;
+            Cycle = 0;
 
             Name = _parentRsw.Reader.ReadStringIso(80);
             WaveName = _parentRsw.Reader.ReadStringIso(80);
-            Position = new Vector3(_parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle());
+            Position = new Vector3(
+                _parentRsw.Reader.ReadSingle() / 5, 
+                _parentRsw.Reader.ReadSingle() / 5, 
+                _parentRsw.Reader.ReadSingle() / 5
+            );
             Volume = _parentRsw.Reader.ReadSingle();
             Width = _parentRsw.Reader.ReadInt32();
             Height = _parentRsw.Reader.ReadInt32();

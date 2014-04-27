@@ -21,6 +21,15 @@ namespace Zeus.CommunicationFramework.Services.Messages {
         /// </summary>
         public object ReturnValue { get; set; }
 
+        public RemoteInvokeReturnMessage() {
+            
+        }
+
+        public RemoteInvokeReturnMessage(ushort id) {
+            Id = id;
+        }
+
+
         /// <summary>
         ///     Represents this object as string.
         /// </summary>

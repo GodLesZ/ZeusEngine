@@ -23,7 +23,11 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsw.Objects {
         public Effect(Format rsw)
             : base(rsw, MapObjectType.Effect) {
             Name = _parentRsw.Reader.ReadStringIso(80);
-            Position = new Vector3(_parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle());
+            Position = new Vector3(
+                _parentRsw.Reader.ReadSingle() / 5, 
+                _parentRsw.Reader.ReadSingle() / 5, 
+                _parentRsw.Reader.ReadSingle() / 5
+            );
             EffectType = _parentRsw.Reader.ReadInt32();
             EmitSpeed = _parentRsw.Reader.ReadSingle();
             Params = new[] {

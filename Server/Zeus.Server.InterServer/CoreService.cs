@@ -9,7 +9,7 @@ using Zeus.Server.Library.Tools;
 
 namespace Zeus.Server.InterServer {
 
-    public class Core {
+    public class CoreService {
 
         private static IServiceApplication _server;
 

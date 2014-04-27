@@ -10,15 +10,14 @@ namespace Zeus.Library.Tests.PoolingTests {
         const int PoolSize = 5;
 
         /// <summary>
-        /// Test a EagerPool with <see cref="PoolItemAccessMode.Fifo"/>
+        /// Test a EagerPool with <see cref="EPoolItemAccessMode.Fifo"/>
         /// </summary>
         [Test]
         public void TestPoolingEagerAndFifo() {
-            var accessMode = PoolItemAccessMode.Fifo;
             // FIX: Reset global count due other tests running before
             Foo.GlobalCount = 0;
 
-            using (var pool = new EagerPool<Foo>(PoolSize, p => new Foo(p), accessMode)) {
+            using (var pool = new EagerPool<Foo>(PoolSize, p => new Foo(p))) {
                 // All foo's sould be created and raised the number
                 Assert.True(Foo.GlobalCount == PoolSize);
 
@@ -36,15 +35,14 @@ namespace Zeus.Library.Tests.PoolingTests {
         }
 
         /// <summary>
-        /// Test a LazyPool with <see cref="PoolItemAccessMode.Fifo"/>
+        /// Test a LazyPool with <see cref="EPoolItemAccessMode.Fifo"/>
         /// </summary>
         [Test]
         public void TestPoolingLazyAndFifo() {
-            var accessMode = PoolItemAccessMode.Fifo;
             // FIX: Reset global count due other tests running before
             Foo.GlobalCount = 0;
 
-            using (var pool = new LazyPool<Foo>(PoolSize, p => new Foo(p), accessMode)) {
+            using (var pool = new LazyPool<Foo>(PoolSize, p => new Foo(p))) {
                 // All objects should be lazy loaded
                 Assert.True(Foo.GlobalCount == 0);
                 Assert.True(pool.LazyLoadedItemCount == 0);
@@ -58,7 +56,7 @@ namespace Zeus.Library.Tests.PoolingTests {
                 Assert.True(foo != null);
                 Assert.True(foo2 != null);
 
-                // Realease them - also in the pool
+                // Release them
                 foo.Dispose();
                 foo2.Dispose();
             }
@@ -74,10 +72,9 @@ namespace Zeus.Library.Tests.PoolingTests {
             /// <summary>
             /// Counts all created objects of type <see cref="Foo"/>
             /// </summary>
-            public static int GlobalCount = 0;
+            public static int GlobalCount;
 
-            protected IPool<Foo> objectPool;
-
+            protected readonly IPool<Foo> _objectPool;
 
             /// <summary>
             /// Gets the id of this foo
@@ -89,14 +86,14 @@ namespace Zeus.Library.Tests.PoolingTests {
             
 
             public Foo(IPool<Foo> pool) {
-                objectPool = pool;
+                _objectPool = pool;
 
                 Id = Interlocked.Increment(ref GlobalCount);
             }
 
             public void Dispose() {
-                if (objectPool.IsDisposed == false) {
-                    objectPool.Release(this);
+                if (_objectPool.IsDisposed == false) {
+                    _objectPool.Release(this);
                 }
 
                 Console.WriteLine("Goodbye from Foo #{0}", Id);

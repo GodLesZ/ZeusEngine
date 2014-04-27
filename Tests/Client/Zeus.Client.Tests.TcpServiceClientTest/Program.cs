@@ -13,7 +13,7 @@ namespace Zeus.Client.Tests.TcpServiceClientTest {
 
 
         public static void Main(string[] args) {
-            var endPoint = ProtocolEndPointBase.CreateEndPoint("tcp://127.0.0.1:13378");
+            var endPoint = ProtocolEndPointBase.CreateEndPoint("tcp://127.0.0.1:6900");
 
             _client = new TestClientImplementation();
             _serviceClient = ServiceClientBuilder.CreateClient<ITestServerService>(endPoint, _client);

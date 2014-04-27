@@ -5,20 +5,19 @@ namespace Zeus.Library.Pooling {
 
     public class LazyPool<T> : AbstractPool<T> {
 
-        public int LazyLoadedItemCount { get; protected set; }
-
-
-        public LazyPool(int poolSize, Func<IPool<T>, T> factory)
-            : this(poolSize, factory, PoolItemAccessMode.Fifo) {
+        public int LazyLoadedItemCount {
+            get;
+            protected set;
         }
 
-        public LazyPool(int poolSize, Func<IPool<T>, T> factory, PoolItemAccessMode accessMode)
-            : base(poolSize, factory, accessMode) {
+
+        public LazyPool(int poolSize, Func<IPool<T>, T> itemFactoryFunc, EPoolItemAccessMode accessMode = EPoolItemAccessMode.Fifo)
+            : base(poolSize, itemFactoryFunc, accessMode) {
         }
 
 
         public override T Acquire() {
-            Sync.WaitOne();
+            _sync.WaitOne();
 
             // Try to get it from the pool of already released items
             lock (ItemStore) {
@@ -32,7 +31,7 @@ namespace Zeus.Library.Pooling {
             Interlocked.Increment(ref tmp);
             LazyLoadedItemCount = tmp;
             // Fetch a new item
-            return Factory(this);
+            return ItemFactoryFunc(this);
         }
 
     }

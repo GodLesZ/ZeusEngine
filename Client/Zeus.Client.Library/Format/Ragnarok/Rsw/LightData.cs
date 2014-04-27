@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace Zeus.Client.Library.Format.Ragnarok.Rsw {
 
@@ -25,7 +26,12 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsw {
             protected set;
         }
 
-        public float Ignored {
+        public float Opacity {
+            get;
+            protected set;
+        }
+
+        public Vector3 Direction {
             get;
             protected set;
         }
@@ -39,6 +45,8 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsw {
             Latitude = 45;
             DiffuseColor = new Color(1, 1, 1);
             AmbientColor = new Color(0.3f, 0.3f, 0.3f);
+            Opacity = 1;
+            Direction = Vector3.Zero;
 
             if (_parentRsw.FileHeader.Version.IsCompatible(1, 5)) {
                 Longitude = _parentRsw.Reader.ReadInt32();
@@ -46,10 +54,21 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsw {
                 DiffuseColor = new Color(_parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle());
                 AmbientColor = new Color(_parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle(), _parentRsw.Reader.ReadSingle());
             }
-            
+
             if (_parentRsw.FileHeader.Version.IsCompatible(1, 7)) {
-                Ignored = _parentRsw.Reader.ReadSingle();
+                Opacity = _parentRsw.Reader.ReadSingle();
             }
+
+
+            // Calculate light direction
+            var longitude = Longitude * Math.PI / 180;
+            var latitude = Latitude * Math.PI / 180;
+
+            Direction = new Vector3(
+                (float)(-Math.Cos(longitude) * Math.Sin(latitude)),
+                (float)-Math.Cos(latitude),
+                (float)(-Math.Sin(longitude) * Math.Sin(latitude))
+            );
         }
 
     }

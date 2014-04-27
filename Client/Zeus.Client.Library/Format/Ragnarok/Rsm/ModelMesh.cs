@@ -302,13 +302,17 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsm {
                 VertexBuffer.Add(textureIndex, vertexBuffer);
             }
 
+        }
 
-            // Load textures
+        public void LoadTextures(GraphicsDevice graphicsDevice, string basepath) {
+
             foreach (var index in Textureids) {
-                var texture = _rsmRoot.LoadTexture(index, graphicsDevice);
+                var texture = _rsmRoot.LoadAndCacheTexture(index, graphicsDevice, basepath);
                 TextureCache.Add(index, texture);
             }
+
         }
+
         public void Draw(GraphicsDevice device, BasicEffect effect, Matrix view, Matrix projection, Matrix world) {
             if (VerticeListByTextureIndex.Count == 0) {
                 CalculateVertexArray(device);

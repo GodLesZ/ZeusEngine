@@ -8,6 +8,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Zeus.Client.Library.Format.Ragnarok.Rsw.Objects;
+using Effect = Zeus.Client.Library.Format.Ragnarok.Rsw.Objects.Effect;
 using Model = Zeus.Client.Library.Format.Ragnarok.Rsw.Objects.Model;
 
 namespace Zeus.Client.Library.Format.Ragnarok.Rsw {
@@ -48,23 +50,10 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsw {
             protected set;
         }
 
-        public int GroundTop {
+        public GroundData GroundData {
             get;
             protected set;
         }
-        public int GroundBottom {
-            get;
-            protected set;
-        }
-        public int GroundLeft {
-            get;
-            protected set;
-        }
-        public int GroundRight {
-            get;
-            protected set;
-        }
-
 
         public List<MapObjectBase> Objects {
             get;
@@ -102,10 +91,6 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsw {
 
 
         protected override bool ReadInternal() {
-            GroundTop = -500;
-            GroundBottom = 500;
-            GroundLeft = -500;
-            GroundRight = 500;
             Objects = new List<MapObjectBase>();
 
             if (base.ReadInternal() == false) {
@@ -134,35 +119,29 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsw {
 
             WaterData = new WaterData(this);
             LightData = new LightData(this);
-
-            if (FileHeader.Version.IsCompatible(1, 6)) {
-                GroundTop = Reader.ReadInt32();
-                GroundBottom = Reader.ReadInt32();
-                GroundLeft = Reader.ReadInt32();
-                GroundRight = Reader.ReadInt32();
-            }
+            GroundData = new GroundData(this);
 
             var objectCount = Reader.ReadInt32();
             for (var i = 0; i < objectCount; i++) {
                 var objectType = (MapObjectType)Reader.ReadInt32();
                 switch (objectType) {
                     case MapObjectType.Model:
-                        var modelObject = new Objects.Model(this);
+                        var modelObject = new Model(this);
                         Objects.Add(modelObject);
                         break;
 
                     case MapObjectType.Light:
-                        var lightObject = new Objects.Light(this);
+                        var lightObject = new Light(this);
                         Objects.Add(lightObject);
                         break;
 
                     case MapObjectType.Sound:
-                        var soundObject = new Objects.Sound(this);
+                        var soundObject = new Sound(this);
                         Objects.Add(soundObject);
                         break;
 
                     case MapObjectType.Effect:
-                        var effectObject = new Objects.Effect(this);
+                        var effectObject = new Effect(this);
                         Objects.Add(effectObject);
                         break;
 

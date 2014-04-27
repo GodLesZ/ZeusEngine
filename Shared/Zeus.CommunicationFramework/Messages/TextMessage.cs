@@ -13,8 +13,9 @@ namespace Zeus.CommunicationFramework.Messages {
         /// </summary>
         public string Text { get; set; }
 
-        public TextMessage() {
 
+        public TextMessage(ushort id) {
+            Id = id;
         }
 
         public TextMessage(string text) {
@@ -25,6 +26,7 @@ namespace Zeus.CommunicationFramework.Messages {
             : this(text) {
             RepliedId = repliedId;
         }
+
 
         /// <summary>
         ///     Creates a string to represents this object.

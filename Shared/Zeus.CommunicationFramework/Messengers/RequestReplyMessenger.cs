@@ -139,8 +139,8 @@ namespace Zeus.CommunicationFramework.Messengers {
 
         public RequestReplyMessenger(TMessenger messenger) {
             Messenger = messenger;
-            messenger.MessageReceived += Messenger_MessageReceived;
-            messenger.MessageSent += Messenger_MessageSent;
+            Messenger.MessageReceived += Messenger_MessageReceived;
+            Messenger.MessageSent += Messenger_MessageSent;
             _incomingMessageProcessor = new SequentialItemProcessor<IMessage>(OnMessageReceived);
             _waitingMessages = new SortedList<ushort, WaitingMessage>();
             Timeout = DefaultTimeout;

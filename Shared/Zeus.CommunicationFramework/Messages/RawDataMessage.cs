@@ -13,8 +13,9 @@ namespace Zeus.CommunicationFramework.Messages {
         /// </summary>
         public byte[] MessageData { get; set; }
 
-        public RawDataMessage() {
 
+        public RawDataMessage(ushort id) {
+            Id = id;
         }
 
         public RawDataMessage(byte[] messageData) {
@@ -25,6 +26,7 @@ namespace Zeus.CommunicationFramework.Messages {
             : this(messageData) {
             RepliedId = repliedId;
         }
+
 
         /// <summary>
         ///     Creates a string to represents this object.

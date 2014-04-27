@@ -24,11 +24,9 @@ namespace Zeus.CommunicationFramework.Client.Tcp {
         /// </summary>
         /// <returns>Ready communication channel to communicate</returns>
         protected override ICommunicationChannel CreateCommunicationChannel() {
-            return new TcpCommunicationChannel(
-                TcpHelper.ConnectToServer(
-                    new IPEndPoint(IPAddress.Parse(_serverEndPoint.IpAddress), _serverEndPoint.TcpPort),
-                    ConnectTimeout
-                    ));
+            var endpoint = new IPEndPoint(IPAddress.Parse(_serverEndPoint.IpAddress), _serverEndPoint.TcpPort);
+            var socket = TcpHelper.ConnectToServer(endpoint, ConnectTimeout);
+            return new TcpCommunicationChannel(socket);
         }
 
     }

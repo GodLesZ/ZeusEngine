@@ -2,6 +2,6 @@
 <configuration>
   <zeus>
     <host>127.0.0.1</host>
-    <port>13378</port>
+    <port>6900</port>
   </zeus>
 </configuration>

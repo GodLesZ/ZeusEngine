@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
+using OpenTK.Graphics.OpenGL;
 using RsmFormat = Zeus.Client.Library.Format.Ragnarok.Rsm.Format;
 using RswFormat = Zeus.Client.Library.Format.Ragnarok.Rsw.Format;
 
@@ -55,12 +56,149 @@ namespace Zeus.Client.Tests.MonoGameTest {
 
             _testRsm = new RsmFormat("Content/random_test_model.rsm");
             _testRsm.CalculateMeshes(GraphicsDevice);
+            _testRsm.LoadTextures(GraphicsDevice, "C:/Games/ragnarok-full-data/data/");
 
             //_testRsw = new RswFormat("Content/prontera.rsw");
             //_testRsw.Load(GraphicsDevice, "C:/Games/RO/data/");
 
             _modelEffect = new BasicEffect(GraphicsDevice);
             _modelEffect.TextureEnabled = true;
+
+
+            var _vertexShader = @"
+                attribute vec3 aPosition;
+                attribute vec3 aVertexNormal;
+                attribute vec2 aTextureCoord;
+                attribute float aAlpha;
+                
+                varying vec2 vTextureCoord;
+                varying float vLightWeighting;
+                varying float vAlpha;
+                
+                uniform mat4 uModelViewMat;
+                uniform mat4 uProjectionMat;
+                
+                uniform vec3 uLightDirection;
+                uniform mat3 uNormalMat;
+                
+                void main(void) {
+                    gl_Position     = uProjectionMat * uModelViewMat * vec4( aPosition, 1.0);
+                    
+                    vTextureCoord   = aTextureCoord;
+                    vAlpha          = aAlpha;
+                    
+                    vec4 lDirection  = uModelViewMat * vec4( uLightDirection, 0.0);
+                    vec3 dirVector   = normalize(lDirection.xyz);
+                    float dotProduct = dot( uNormalMat * aVertexNormal, dirVector );
+                    vLightWeighting  = max( dotProduct, 0.5 );
+                }";
+
+
+            var _fragmentShader = @"
+                varying vec2 vTextureCoord;
+                varying float vLightWeighting;
+                varying float vAlpha;
+                
+                uniform sampler2D uDiffuse;
+                
+                uniform bool  uFogUse;
+                uniform float uFogNear;
+                uniform float uFogFar;
+                uniform vec3  uFogColor;
+                
+                uniform vec3  uLightAmbient;
+                uniform vec3  uLightDiffuse;
+                uniform float uLightOpacity;
+                
+                void main(void) {
+                    vec4 texture  = texture2D( uDiffuse,  vTextureCoord.st );
+                    
+                    if ( texture.a == 0.0 )
+                        discard;
+                    
+                    vec3 Ambient    = uLightAmbient * uLightOpacity;
+                    vec3 Diffuse    = uLightDiffuse * vLightWeighting;
+                    vec4 LightColor = vec4( Ambient + Diffuse, 1.0);
+                    
+                    gl_FragColor    = texture * clamp(LightColor, 0.0, 1.0);
+                    gl_FragColor.a *= vAlpha;
+                    
+                    if ( uFogUse ) {
+                        float depth     = gl_FragCoord.z / gl_FragCoord.w;
+                        float fogFactor = smoothstep( uFogNear, uFogFar, depth );
+                        gl_FragColor    = mix( gl_FragColor, vec4( uFogColor, gl_FragColor.w ), fogFactor );
+                    }
+                }";
+
+        }
+
+        protected int CreateShaderProgram(string vertexShader, string fragmentShader) {
+
+            // Compile shader and attach them
+            var shaderProgram = GL.CreateProgram();
+            var vs = CompileShader(vertexShader, ShaderType.VertexShader);
+            var fs = CompileShader(fragmentShader, ShaderType.FragmentShader);
+
+            GL.AttachShader(shaderProgram, vs);
+            GL.AttachShader(shaderProgram, fs);
+            GL.LinkProgram(shaderProgram);
+
+            // Is there an error
+            var link_status = 0;
+            GL.GetProgram(shaderProgram, ProgramParameter.LinkStatus, out link_status);
+            if (link_status < 1) {
+                var error = GL.GetProgramInfoLog(shaderProgram);
+                GL.DeleteProgram(shaderProgram);
+                GL.DeleteShader(vs);
+                GL.DeleteShader(fs);
+
+                throw new Exception("CreateShaderProgram() - Fail to link shaders : " + error);
+            }
+
+            // Get back attributes
+            var count = 0;
+            GL.GetProgram(shaderProgram, ProgramParameter.ActiveAttributes, out count);
+            var shaderAttributes = new Dictionary<ActiveAttribType, string>();
+            for (var i = 0; i < count; i++) {
+                var size = 0;
+                ActiveAttribType type;
+                var attrib = GL.GetActiveAttrib(shaderProgram, i, out size, out type);
+                shaderAttributes.Add(type, attrib);
+            }
+
+            // Get back uniforms
+            GL.GetProgram(shaderProgram, ProgramParameter.ActiveUniforms, out count);
+            var shaderUniforms = new Dictionary<ActiveUniformType, string>();
+            for (var i = 0; i < count; i++) {
+                var size = 0;
+                ActiveUniformType type;
+                var attrib = GL.GetActiveUniform(shaderProgram, i, out size, out type);
+                shaderUniforms.Add(type, attrib);
+            }
+
+            //gl.uniformMatrix4fv(uniform.uModelViewMat, false, modelView);
+            //GL.UniformMatrix4(uniform.uModelViewMat, false, modelView);
+
+            return shaderProgram;
+        }
+
+        private int CompileShader(string vertexShader, ShaderType type) {
+            // Compile shader
+            var shader = GL.CreateShader(type);
+            GL.ShaderSource(shader, "precision mediump float;" + vertexShader);
+            GL.CompileShader(shader);
+
+            // Is there an error ?
+            var compile_status = 0;
+            GL.GetShader(shader, ShaderParameter.CompileStatus, out compile_status);
+            if (compile_status < 1) {
+                var error = GL.GetShaderInfoLog(shader);
+                GL.DeleteShader(shader);
+
+                throw new Exception("WebGL::CompileShader() - Fail to compile shader : " + error);
+            }
+
+            return shader;
         }
 
         /// <summary>
@@ -128,7 +266,7 @@ namespace Zeus.Client.Tests.MonoGameTest {
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
+
             if (_showWireframe) {
                 var rasterizerState = new RasterizerState {
                     FillMode = FillMode.WireFrame

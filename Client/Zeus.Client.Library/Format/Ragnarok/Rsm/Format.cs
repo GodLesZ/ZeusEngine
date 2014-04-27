@@ -97,11 +97,14 @@ namespace Zeus.Client.Library.Format.Ragnarok.Rsm {
             Meshes.ForEach(m => m.CalculateVertexArray(graphicsDevice));
         }
 
-        public Texture2D LoadTexture(int index, GraphicsDevice device) {
+        public void LoadTextures(GraphicsDevice graphicsDevice, string basepath) {
+            Meshes.ForEach(m => m.LoadTextures(graphicsDevice, basepath));
+        }
+
+        public Texture2D LoadAndCacheTexture(int index, GraphicsDevice device, string basepath) {
             if (TexturesCache.ContainsKey(index) == false) {
-                // @TODO: Dynamic base path
                 var dataFilepath = TexturesPaths[index];
-                var filepath = string.Format("C:/Games/RO/{0}", dataFilepath);
+                var filepath = Path.Combine(basepath, dataFilepath);
                 TexturesCache[index] = ImageExtensions.FromFile(filepath, device);
             }
 

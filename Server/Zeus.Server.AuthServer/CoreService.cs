@@ -13,7 +13,7 @@ using Zeus.Server.Library.Tools;
 
 namespace Zeus.Server.AuthServer {
 
-    public class Core {
+    public class CoreService {
 
         private static IServiceApplication _clientService;
         private static IServiceClient<IAuthService> _interClient;
@@ -43,7 +43,7 @@ namespace Zeus.Server.AuthServer {
             string interServerEndPointAddress = string.Format("tcp://{0}:{1}", dynamicConfig.network.inter_server.host, dynamicConfig.network.inter_server.port);
             var interServerEndPoint = ProtocolEndPointBase.CreateEndPoint(interServerEndPointAddress);
 
-            ServerConsole.Info("Start connecting to intser-server..");
+            ServerConsole.Info("Start connecting to inter-server..");
             // @TODO: Is any action coming from inter-server to auth-server?
             // @TODO: Create inter -> auth service (character goes back to char select)
             _interClient = ServiceClientBuilder.CreateClient<IAuthService>(interServerEndPoint, new ServerServiceImplementation());

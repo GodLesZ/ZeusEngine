@@ -36,7 +36,7 @@ namespace Zeus.Client.TcpTestClient {
                     _service.Disconnect();
                 }
                 if (cmd == "login") {
-                    IAccountInfo account = _service.ServiceProxy.ClientLogin("test", "test");
+                    var account = _service.ServiceProxy.ClientLogin("test", "test");
                     Console.WriteLine("Got account info: {0}", account);
                 }
                 if (cmd == "servers") {

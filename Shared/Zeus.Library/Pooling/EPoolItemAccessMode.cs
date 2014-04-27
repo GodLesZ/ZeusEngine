@@ -1,6 +1,6 @@
 ﻿namespace Zeus.Library.Pooling {
 
-    public enum PoolItemAccessMode {
+    public enum EPoolItemAccessMode {
 
         Fifo,
         Lifo,

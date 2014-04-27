@@ -32,7 +32,7 @@ namespace Zeus.Library.Tests.YamlConfigurationTests {
             var dynConf = conf.FirstAsExpando();
 
             Assert.IsInstanceOf<float>(dynConf.node_test_types.sub_float);
-            Assert.True(((float)dynConf.node_test_types.sub_float).Equals (8.15f));
+            Assert.True(((float)dynConf.node_test_types.sub_float).Equals(8.15f));
         }
 
     }

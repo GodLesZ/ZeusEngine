@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zeus.Server.WorldServer {
 
-    class Core {
+    class CoreService {
 
         static void Main(string[] args) {
         }

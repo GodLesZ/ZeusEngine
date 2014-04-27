@@ -2,7 +2,7 @@
 <configuration>
   <network>
     <host>127.0.0.1</host>
-    <port>13378</port>
+    <port>6900</port>
     <inter_server>
       <host>127.0.0.1</host>
       <port>13379</port>

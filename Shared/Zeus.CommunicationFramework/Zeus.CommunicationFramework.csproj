@@ -32,12 +32,19 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\3rd-party\Json.Net-v5.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommunicationException.cs" />
     <Compile Include="CommunicationStateException.cs" />
     <Compile Include="CommunicationStates.cs" />
+    <Compile Include="Protocols\JsonSerialization\JsonSerializationProtocol.cs" />
+    <Compile Include="Protocols\JsonSerialization\JsonSerializationProtocolFactory.cs" />
     <Compile Include="SimpleConnectionTimer.cs" />
     <Compile Include="Channels\CommunicationChannelBase.cs" />
     <Compile Include="Channels\CommunicationChannelEventArgs.cs" />
@@ -100,5 +107,4 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup />
 </Project>

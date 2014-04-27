@@ -59,12 +59,15 @@
     <Compile Include="Format\Ragnarok\FileFormatHeader.cs" />
     <Compile Include="Format\Ragnarok\Gnd\Format.cs" />
     <Compile Include="Format\Ragnarok\Gnd\TextureInfo.cs" />
+    <Compile Include="Format\Ragnarok\Renderer\Map.cs" />
+    <Compile Include="Format\Ragnarok\Renderer\MapFogSettings.cs" />
     <Compile Include="Format\Ragnarok\Rsm\Format.cs" />
     <Compile Include="Format\Ragnarok\Rsm\ModelAnimationFrame.cs" />
     <Compile Include="Format\Ragnarok\Rsm\ModelMesh.cs" />
     <Compile Include="Format\Ragnarok\Rsm\ModelMeshFace.cs" />
     <Compile Include="Format\Ragnarok\Rsm\ModelShadeType.cs" />
     <Compile Include="Format\Ragnarok\Rsw\Format.cs" />
+    <Compile Include="Format\Ragnarok\Rsw\GroundData.cs" />
     <Compile Include="Format\Ragnarok\Rsw\LightData.cs" />
     <Compile Include="Format\Ragnarok\Rsw\MapObjectType.cs" />
     <Compile Include="Format\Ragnarok\Rsw\MapObjectBase.cs" />
@@ -73,6 +76,7 @@
     <Compile Include="Format\Ragnarok\Rsw\Objects\Light.cs" />
     <Compile Include="Format\Ragnarok\Rsw\Objects\Model.cs" />
     <Compile Include="Format\Ragnarok\Rsw\WaterData.cs" />
+    <Compile Include="IRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FastBitmap.cs" />
